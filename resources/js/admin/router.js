@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 
 import AdminDashboard from "../components/admin/AdminDashboard";
 import AdminLogin from "../components/admin/auth/AdminLogin";
+import AdminRegister from "../components/admin/auth/AdminRegister";
 import AdminLogout from "../components/admin/auth/AdminLogout";
 import PartnerList from "../components/admin/partner/PartnerList";
 
@@ -151,6 +152,7 @@ const router = new VueRouter({
     routes: [
         { path: '/', name: "Home", component: () => import(/* webpackChunkName: "Home" */ '../components/app/AppHome') },
         {path: "/admin/login",component: AdminLogin,name: "AdminLogin"},
+        {path: "/admin/register",component: AdminRegister,name: "AdminRegister"},
         {path: "/admin/logout",component: AdminLogout,name: "AdminLogout"},
         {path: "/admin/dashboard",component: AdminDashboard,name: "AdminDashboard"},
         {path: "/admin/partner",component: PartnerList,name: "PartnerList"},

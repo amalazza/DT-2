@@ -35,7 +35,10 @@ use App\Http\Controllers\Api\QuoteController;
 use App\Http\Controllers\Api\TestimonialController;
 
 
-    Route::post('register', [AuthController::class, 'register']);
+    // Route::get('register', 'PostController@delete')->middleware('can:isAdmin')->name('post.delete');
+
+
+    Route::post('register', [AuthController::class, 'register'])->middleware('can:isAdmin');
 
     Route::post('login', [AuthController::class, 'login']);
 
