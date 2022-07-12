@@ -76,6 +76,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function()
         'dashboards' => DashboardController::class,
     ]);
 
+    Route::resource('user', UserController::class);
+
     // Language Route
     Route::post('/languages/frontend/update', [LanguageController::class, 'frontendUpdate']);
     Route::post('/languages/backend/update', [LanguageController::class, 'backendUpdate']);

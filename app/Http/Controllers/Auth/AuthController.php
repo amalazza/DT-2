@@ -28,6 +28,8 @@ class AuthController extends Controller
             'password'=>'required|min:8'
         ]);
 
+        // $this->authorize('create-delete-users');
+
         $user = User::create([
         'name' => $post_data['name'],
         'email' => $post_data['email'],
