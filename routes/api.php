@@ -44,6 +44,16 @@ use App\Http\Controllers\Api\TestimonialController;
 
     Route::get('logout', [AuthController::class, 'logout']);
 
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
+        // Route::get('/profile', function(Request $request) {
+        //     return auth()->user();
+        // });
+    
+        // API route for logout user
+        Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
+    });
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function(){
 

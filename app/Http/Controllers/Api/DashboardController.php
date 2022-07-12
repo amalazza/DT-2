@@ -25,7 +25,7 @@ class DashboardController extends Controller
 {
 
     public function adminProfile(){
-        $user = User::first();
+        $user = Auth::user();
         return $user;
     }
 
@@ -36,7 +36,7 @@ class DashboardController extends Controller
                 'email'=>'required'
             ]
         );
-        $user = User::first();
+        $user = Auth::user();
         $image = $user->image;
         $input = $request->all();
         if($request->hasFile('image')){
@@ -53,7 +53,7 @@ class DashboardController extends Controller
             ]
         );
 
-        $user = User::first();
+        $user = Auth::user();
         $input = $request->all();
         $input['password'] = bcrypt($request->password);
         $user->fill($input)->save();
