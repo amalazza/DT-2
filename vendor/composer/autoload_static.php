@@ -189,6 +189,7 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         array (
             'App\\' => 4,
             'Anhskohbo\\NoCaptcha\\' => 20,
+            'AndreasElia\\PostmanGenerator\\' => 29,
         ),
     );
 
@@ -558,6 +559,10 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         array (
             0 => __DIR__ . '/..' . '/anhskohbo/no-captcha/src',
         ),
+        'AndreasElia\\PostmanGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/andreaselia/laravel-api-to-postman/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -582,6 +587,8 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
     );
 
     public static $classMap = array (
+        'AndreasElia\\PostmanGenerator\\Commands\\ExportPostmanCommand' => __DIR__ . '/..' . '/andreaselia/laravel-api-to-postman/src/Commands/ExportPostmanCommand.php',
+        'AndreasElia\\PostmanGenerator\\PostmanGeneratorServiceProvider' => __DIR__ . '/..' . '/andreaselia/laravel-api-to-postman/src/PostmanGeneratorServiceProvider.php',
         'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
         'Anhskohbo\\NoCaptcha\\NoCaptcha' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptcha.php',
         'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => __DIR__ . '/..' . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
@@ -627,6 +634,7 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminVerify' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminVerify.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -638,6 +646,7 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\RegisterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RegisterRequest.php',
         'App\\Http\\Resources\\Blog\\BlogCategoryResource' => __DIR__ . '/../..' . '/app/Http/Resources/Blog/BlogCategoryResource.php',
         'App\\Http\\Resources\\Blog\\BlogResource' => __DIR__ . '/../..' . '/app/Http/Resources/Blog/BlogResource.php',
         'App\\Http\\Resources\\Client\\ClientResource' => __DIR__ . '/../..' . '/app/Http/Resources/Client/ClientResource.php',
@@ -814,6 +823,7 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         'Database\\Factories\\RoleFactory' => __DIR__ . '/../..' . '/database/factories/RoleFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\RoleSeeder' => __DIR__ . '/../..' . '/database/seeders/RoleSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

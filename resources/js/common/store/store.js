@@ -7,6 +7,7 @@ import {setting} from './moduls/setting'
 import {admin} from './moduls/admin'
 import {blogCategory} from './moduls/blogCategory'
 import {blog} from './moduls/blog'
+import {anggota} from './moduls/anggota'
 import {jobCategory} from './moduls/jobCategory'
 import {job} from './moduls/job'
 import {service} from './moduls/service'
@@ -41,6 +42,7 @@ export const store = new Vuex.Store({
         admin : admin,
         blogCategory : blogCategory,
         blog : blog,
+        anggota : anggota,
         jobCategory : jobCategory,
         job : job,
         service : service,

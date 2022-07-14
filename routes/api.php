@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\AnggotaController;
 use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\ClientController;
@@ -40,27 +41,48 @@ use App\Http\Controllers\Api\TestimonialController;
 
     Route::post('register', [AuthController::class, 'register'])->middleware('can:isAdmin');
 
+    Route::post('anggota', [AnggotaController::class, 'store'])->middleware('can:isUser');
+
+    Route::get('anggota', [AnggotaController::class, 'index'])->middleware('can:isManager');
+
+
     Route::post('login', [AuthController::class, 'login']);
 
     Route::get('logout', [AuthController::class, 'logout']);
 
-    Route::group(['middleware' => ['auth:sanctum']], function () {
-        Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
-        // Route::get('/profile', function(Request $request) {
-        //     return auth()->user();
-        // });
+    // Route::group(['middleware' => ['auth:sanctum']], function () {
+    //     Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
+    //     // Route::get('/profile', function(Request $request) {
+    //     //     return auth()->user();
+    //     // });
     
-        // API route for logout user
-        Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
-    });
+    //     // API route for logout user
+    //     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
+    // });
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum'], 'middleware' => ['can:createAnggota']], function(){
+
+    Route::apiResources([
+        'anggotas' => AnggotaController::class,
+    ]);
+    Route::post('/anggotas/multiple-delete', [AnggotaController::class, 'multipleDelete']);
+    Route::post('/anggotas/update/{id}', [AnggotaController::class, 'update']);
+
+    Route::resource('user', UserController::class);
+
+    Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
+    Route::post('/dashboards/admin/profile/update', [DashboardController::class, 'adminProfileUpdate']);
+    Route::post('/dashboards/admin/password/update', [DashboardController::class, 'adminPasswordUpdate']);
+});
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum'], 'middleware' => ['can:isAdmin']], function(){
 
     Route::apiResources([
         'settings' => SettingController::class,
         'bcategories' => BcategoryController::class,
         'blogs' => BlogController::class,
+        // 'anggotas' => AnggotaController::class,
         'job-categories' => JobCategoryController::class,
         'jobs' => JobController::class,
         'applications' => ApplicationController::class,
@@ -89,7 +111,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function()
         'dashboards' => DashboardController::class,
     ]);
 
-    Route::resource('user', UserController::class);
+    // Route::resource('user', UserController::class);
 
     // Language Route
     Route::post('/languages/frontend/update', [LanguageController::class, 'frontendUpdate']);
@@ -97,9 +119,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function()
     Route::get('/languages/backend/language', [LanguageController::class, 'backendLanguage']);
 
     // Admin Route
-    Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
-    Route::post('/dashboards/admin/profile/update', [DashboardController::class, 'adminProfileUpdate']);
-    Route::post('/dashboards/admin/password/update', [DashboardController::class, 'adminPasswordUpdate']);
+    // Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
+    // Route::post('/dashboards/admin/profile/update', [DashboardController::class, 'adminProfileUpdate']);
+    // Route::post('/dashboards/admin/password/update', [DashboardController::class, 'adminPasswordUpdate']);
 
     // Blog Category Route
     Route::post('/bcategories/multiple-delete', [BcategoryController::class, 'multipleDelete']);

@@ -96,4 +96,5 @@ return array(
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'App\\' => array($baseDir . '/app'),
     'Anhskohbo\\NoCaptcha\\' => array($vendorDir . '/anhskohbo/no-captcha/src'),
+    'AndreasElia\\PostmanGenerator\\' => array($vendorDir . '/andreaselia/laravel-api-to-postman/src'),
 );

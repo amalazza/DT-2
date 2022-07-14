@@ -41,6 +41,12 @@ class AuthServiceProvider extends ServiceProvider
              return $user->role_id === 3;
          });
 
+        Gate::define('createAnggota', function (User $user) {
+            if($user->role_id===1 || $user->role_id===2 || $user->role_id===3) {
+                return true;
+            }
+        });
+
         // Gate::define('create-delete-users', function (User $user) {
         //     if($user->role_id===1) {
         //         return true;
