@@ -14,7 +14,7 @@
         <div class="header-left">
           <div class="site-logo">
             <router-link :to="{ name: 'Home' }"
-              ><img v-lazy="`/uploads/${setting.header_logo_dark}`"
+              ><img  style="max-height: 100px !important" v-lazy="`/uploads/${setting.header_logo_dark}`"
             /></router-link>
           </div>
         </div>
