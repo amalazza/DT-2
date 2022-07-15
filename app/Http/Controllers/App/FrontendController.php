@@ -5,6 +5,7 @@ namespace App\Http\Controllers\App;
 use App\Models\Faq;
 use App\Models\Job;
 use App\Models\Blog;
+use App\Models\Anggota;
 use App\Models\Team;
 use App\Models\Quote;
 use App\Models\Client;
@@ -36,6 +37,7 @@ use App\Http\Resources\Blog\BlogCategoryResource;
 use App\Http\Resources\Faq\FaqResource;
 use App\Http\Resources\Job\JobResource;
 use App\Http\Resources\Blog\BlogResource;
+use App\Http\Resources\Anggota\AnggotaResource;
 use App\Http\Resources\Team\TeamResource;
 use App\Http\Resources\Client\ClientResource;
 use App\Http\Resources\Slider\SliderResource;
@@ -113,6 +115,11 @@ class FrontendController extends Controller
     public function blogSection(){
         $blogSections = Blog::orderBy('id', 'DESC')->where('status', 'Public')->limit(3)->get();
         return BlogResource::collection($blogSections);
+    }
+
+    public function anggotaSection(){
+        $anggotaSections = Anggota::orderBy('id', 'DESC')->limit(3)->get();
+        return AnggotaResource::collection($anggotaSections);
     }
 
     public function counters(){
@@ -391,9 +398,32 @@ class FrontendController extends Controller
         return BlogResource::collection($blogs);
     }
 
+    public function anggotas(Request $request){
+
+        $category = $request->category;
+        $search = $request->search;
+        $catid = null;
+        if ($category == '') {
+            $catid = null;
+        }else{
+            $data['category'] = Bcategory::where('slug', $category)->firstOrFail();
+            $catid = $data['category']->id;
+        }
+        $anggotas = Anggota::when($search, function ($query, $search) {
+                                return $query->where('nama', 'like', '%'.$search.'%');
+                            })
+                            ->orderBy('id', 'DESC')->paginate(6);
+
+        return AnggotaResource::collection($anggotas);
+    }
+
     public function blogDetails($slug){
         $blogDetails = Blog::where('slug', $slug)->first();
         return new BlogResource($blogDetails);
+    }
+    public function anggotaDetails($slug){
+        $anggotaDetails = Anggota::where('slug', $slug)->first();
+        return new AnggotaResource($anggotaDetails);
     }
     public function clients(){
         $clients = Client::where('status', 'Public')->orderBy('id', 'DESC')->get();

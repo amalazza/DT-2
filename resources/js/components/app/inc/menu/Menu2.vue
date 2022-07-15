@@ -4,7 +4,7 @@
         <div class="container-fluid mainmenu-wrapper container-1470 d-flex align-items-center justify-content-between">
             <div class="header-left">
                 <div class="site-logo">
-                    <router-link :to="{ name: 'Home' }" ><img v-lazy="`/uploads/${setting.header_logo_dark}`"></router-link>
+                    <router-link :to="{ name: 'Home' }" ><img style="max-height: 100px !important" v-lazy="`/uploads/${setting.header_logo_dark}`"></router-link>
                 </div>
             </div>
             <NavItem></NavItem>

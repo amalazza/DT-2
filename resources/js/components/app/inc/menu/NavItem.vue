@@ -12,58 +12,10 @@
             $t("About")
           }}</router-link>
         </li>
-        <li v-if="visibility.is_service_page" class="pore">
-          <router-link class="nav-link" :to="{ name: 'Service' }">{{
-            $t("Service")
+        <li v-if="visibility.is_about_page" class="pore">
+          <router-link class="nav-link" :to="{ name: 'Anggota' }">{{
+            $t("Anggota")
           }}</router-link>
-        </li>
-        <li v-if="visibility.is_poerfolio_page" class="pore">
-          <router-link class="nav-link" :to="{ name: 'Portfolio' }">{{
-            $t("Portfolio")
-          }}</router-link>
-        </li>
-        <li
-          v-if="
-            visibility.is_package_page ||
-            visibility.is_team_page ||
-            visibility.is_faq_page ||
-            visibility.is_gallery_page ||
-            visibility.is_career_page ||
-            visibility.is_blog_page
-          "
-          class="submenu-wrapper pore"
-        >
-          <a class="sm-link p-link" href="javascript: void(0)"
-            >{{ $t("Pages") }}
-           </a>
-            <span class="dd-trigger"><i class="fas fa-plus"></i></span
-          >
-          <ul class="submenu">
-            <li v-if="visibility.is_package_page">
-              <router-link :to="{ name: 'Package' }">{{
-                $t("Package")
-              }}</router-link>
-            </li>
-            <li v-if="visibility.is_team_page">
-              <router-link :to="{ name: 'Team' }">{{ $t("Team") }}</router-link>
-            </li>
-            <li v-if="visibility.is_faq_page">
-              <router-link :to="{ name: 'Faq' }">{{ $t("Faq") }}</router-link>
-            </li>
-            <li v-if="visibility.is_gallery_page">
-              <router-link :to="{ name: 'Gallery' }">{{
-                $t("Gallery")
-              }}</router-link>
-            </li>
-            <li v-if="visibility.is_career_page">
-              <router-link :to="{ name: 'Career' }">{{
-                $t("Career")
-              }}</router-link>
-            </li>
-            <li v-if="visibility.is_blog_page">
-              <router-link :to="{ name: 'Blog' }">{{ $t("Blog") }}</router-link>
-            </li>
-          </ul>
         </li>
         <li v-if="visibility.is_contact_page" class="pore">
           <router-link class="nav-link" :to="{ name: 'Contact' }">{{
@@ -71,8 +23,8 @@
           }}</router-link>
         </li>
         <li v-if="visibility.is_quote_page" class="mobile-quote">
-          <router-link class="nav-link" :to="{ name: 'GateQuote' }">{{
-            $t("Gate A Quote")
+          <router-link class="nav-link" :to="{ name: 'Login' }">{{
+            $t("Login")
           }}</router-link>
         </li>
       </ul>
@@ -82,8 +34,8 @@
     <div class="header-extra d-flex align-items-center">
       <div class="nav-toggler"><span></span><span></span><span></span></div>
       <div v-if="visibility.is_quote_page" class="navbar-btn">
-        <router-link :to="{ name: 'GateQuote' }">{{
-          $t("Gate A Quote")
+        <router-link :to="{ name: 'Login' }">{{
+          $t("Login")
         }}</router-link>
       </div>
     </div>

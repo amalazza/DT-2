@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\AnggotaController;
 use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\ClientController;
@@ -35,19 +36,53 @@ use App\Http\Controllers\Api\QuoteController;
 use App\Http\Controllers\Api\TestimonialController;
 
 
-    Route::post('register', [AuthController::class, 'register']);
+    // Route::get('register', 'PostController@delete')->middleware('can:isAdmin')->name('post.delete');
+
+
+    Route::post('register', [AuthController::class, 'register'])->middleware('can:isAdmin');
+
+    Route::post('anggota', [AnggotaController::class, 'store'])->middleware('can:isUser');
+
+    Route::get('anggota', [AnggotaController::class, 'index'])->middleware('can:isManager');
+
 
     Route::post('login', [AuthController::class, 'login']);
 
     Route::get('logout', [AuthController::class, 'logout']);
 
+    // Route::group(['middleware' => ['auth:sanctum']], function () {
+    //     Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
+    //     // Route::get('/profile', function(Request $request) {
+    //     //     return auth()->user();
+    //     // });
+    
+    //     // API route for logout user
+    //     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
+    // });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum'], 'middleware' => ['can:createAnggota']], function(){
+
+    Route::apiResources([
+        'anggotas' => AnggotaController::class,
+    ]);
+    Route::post('/anggotas/multiple-delete', [AnggotaController::class, 'multipleDelete']);
+    Route::post('/anggotas/update/{id}', [AnggotaController::class, 'update']);
+
+    Route::resource('user', UserController::class);
+
+    Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
+    Route::post('/dashboards/admin/profile/update', [DashboardController::class, 'adminProfileUpdate']);
+    Route::post('/dashboards/admin/password/update', [DashboardController::class, 'adminPasswordUpdate']);
+});
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum'], 'middleware' => ['can:isAdmin']], function(){
 
     Route::apiResources([
         'settings' => SettingController::class,
         'bcategories' => BcategoryController::class,
         'blogs' => BlogController::class,
+        // 'anggotas' => AnggotaController::class,
         'job-categories' => JobCategoryController::class,
         'jobs' => JobController::class,
         'applications' => ApplicationController::class,
@@ -76,15 +111,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum']], function()
         'dashboards' => DashboardController::class,
     ]);
 
+    // Route::resource('user', UserController::class);
+
     // Language Route
     Route::post('/languages/frontend/update', [LanguageController::class, 'frontendUpdate']);
     Route::post('/languages/backend/update', [LanguageController::class, 'backendUpdate']);
     Route::get('/languages/backend/language', [LanguageController::class, 'backendLanguage']);
 
     // Admin Route
-    Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
-    Route::post('/dashboards/admin/profile/update', [DashboardController::class, 'adminProfileUpdate']);
-    Route::post('/dashboards/admin/password/update', [DashboardController::class, 'adminPasswordUpdate']);
+    // Route::get('/dashboards/admin/profile', [DashboardController::class, 'adminProfile']);
+    // Route::post('/dashboards/admin/profile/update', [DashboardController::class, 'adminProfileUpdate']);
+    // Route::post('/dashboards/admin/password/update', [DashboardController::class, 'adminPasswordUpdate']);
 
     // Blog Category Route
     Route::post('/bcategories/multiple-delete', [BcategoryController::class, 'multipleDelete']);
@@ -216,6 +253,7 @@ Route::get('/section/service', [FrontendController::class, 'serviceSection']);
 Route::get('/section/portfolio', [FrontendController::class, 'portfolioSection']);
 Route::get('/section/team', [FrontendController::class, 'teamSection']);
 Route::get('/section/blog', [FrontendController::class, 'blogSection']);
+Route::get('/section/anggota', [FrontendController::class, 'anggotaSection']);
 Route::get('/section/client', [FrontendController::class, 'clientSection']);
 
 
@@ -280,6 +318,10 @@ Route::get('/bcategories', [FrontendController::class, 'bcategories']);
 // Blog Route
 Route::get('/blogs', [FrontendController::class, 'blogs']);
 Route::get('/blogs/{slug}', [FrontendController::class, 'blogDetails']);
+
+// Anggota Route
+Route::get('/anggotas', [FrontendController::class, 'anggotas']);
+Route::get('/anggotas/{slug}', [FrontendController::class, 'anggotaDetails']);
 
 // Clients Route
 Route::get('/clients', [FrontendController::class, 'clients']);

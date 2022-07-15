@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 
 import AdminDashboard from "../components/admin/AdminDashboard";
 import AdminLogin from "../components/admin/auth/AdminLogin";
+import AdminRegister from "../components/admin/auth/AdminRegister";
 import AdminLogout from "../components/admin/auth/AdminLogout";
 import PartnerList from "../components/admin/partner/PartnerList";
 
@@ -14,6 +15,11 @@ import PartnerList from "../components/admin/partner/PartnerList";
 import BlogCategoryList from "../components/admin/blog/category/List";
 import BlogList from "../components/admin/blog/List";
 import BlogAddOrUpdate from "../components/admin/blog/AddOrUpdate";
+
+// Import Anggota components
+import AnggotaList from "../components/admin/anggota/List";
+import AnggotaAddOrUpdate from "../components/admin/anggota/AddOrUpdate";
+import AnggotaView from "../components/admin/anggota/View";
 
 // Import Job Components
 import JobCategoryList from "../components/admin/job/category/List";
@@ -151,6 +157,7 @@ const router = new VueRouter({
     routes: [
         { path: '/', name: "Home", component: () => import(/* webpackChunkName: "Home" */ '../components/app/AppHome') },
         {path: "/admin/login",component: AdminLogin,name: "AdminLogin"},
+        {path: "/admin/register",component: AdminRegister,name: "AdminRegister"},
         {path: "/admin/logout",component: AdminLogout,name: "AdminLogout"},
         {path: "/admin/dashboard",component: AdminDashboard,name: "AdminDashboard"},
         {path: "/admin/partner",component: PartnerList,name: "PartnerList"},
@@ -159,6 +166,12 @@ const router = new VueRouter({
         {path: "/admin/blog",component: BlogList,name: "BlogList"},
         {path: "/admin/blog/add",component: BlogAddOrUpdate,name: "BlogAdd"},
         {path: "/admin/blog/edit/:id",component: BlogAddOrUpdate,name: "BlogEdit"},
+
+        // Anggota Routes Starts
+        {path: "/admin/anggota",component: AnggotaList,name: "AnggotaList"},
+        {path: "/admin/anggota/add",component: AnggotaAddOrUpdate,name: "AnggotaAdd"},
+        {path: "/admin/anggota/edit/:id",component: AnggotaAddOrUpdate,name: "AnggotaEdit"},
+        {path: "/admin/anggota/view/:id",component: AnggotaView, name: "AnggotaView"},
 
         // Job Routes Starts
         {path: "/admin/job/category",component: JobCategoryList,name: "JobCategoryList"},

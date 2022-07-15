@@ -90,7 +90,16 @@ export default {
           this.$router.push({ name: "AdminDashboard" });
         })
         .catch((err) => {
-          this.errors = err.response.data.errors;
+          // console.log(err.response);
+          // this.errors = err.response.data.errors;
+          if(err.response.status === 401) {
+            this.loading = false;
+						this.$notify({
+              title: "Gagal",
+              message: err.response.data.message,
+              type: "error",
+            });
+					}
         });
     },
   },
