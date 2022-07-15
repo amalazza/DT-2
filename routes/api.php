@@ -253,6 +253,7 @@ Route::get('/section/service', [FrontendController::class, 'serviceSection']);
 Route::get('/section/portfolio', [FrontendController::class, 'portfolioSection']);
 Route::get('/section/team', [FrontendController::class, 'teamSection']);
 Route::get('/section/blog', [FrontendController::class, 'blogSection']);
+Route::get('/section/anggota', [FrontendController::class, 'anggotaSection']);
 Route::get('/section/client', [FrontendController::class, 'clientSection']);
 
 
@@ -317,6 +318,10 @@ Route::get('/bcategories', [FrontendController::class, 'bcategories']);
 // Blog Route
 Route::get('/blogs', [FrontendController::class, 'blogs']);
 Route::get('/blogs/{slug}', [FrontendController::class, 'blogDetails']);
+
+// Anggota Route
+Route::get('/anggotas', [FrontendController::class, 'anggotas']);
+Route::get('/anggotas/{slug}', [FrontendController::class, 'anggotaDetails']);
 
 // Clients Route
 Route::get('/clients', [FrontendController::class, 'clients']);

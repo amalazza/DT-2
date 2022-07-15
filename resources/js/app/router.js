@@ -12,6 +12,7 @@ const router = new VueRouter({
     routes : [
         { path: '/', name: "Home", component: () => import(/* webpackChunkName: "Home" */ '../components/app/AppHome') },
         { path: '/about', name: "About", component: () => import(/* webpackChunkName: "About" */ '../components/app/AppAbout') },
+        { path: '/anggota', name: "Anggota", component: () => import(/* webpackChunkName: "About" */ '../components/app/AppAnggota') },
         { path: '/contact', name: "Contact", component: () => import(/* webpackChunkName: "Contact" */ '../components/app/AppContact') },
         { path: '/service', name: "Service", component: () => import(/* webpackChunkName: "Service" */ '../components/app/AppService') },
         { path: '/service/:slug', name: "ServiceDetails", component: () => import(/* webpackChunkName: "ServiceDetails" */ '../components/app/AppServiceDetails') },

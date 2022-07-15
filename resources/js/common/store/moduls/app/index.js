@@ -14,6 +14,7 @@ export const index = {
         portfolioSection : [],
         teamSection : [],
         blogSection : [],
+        anggotaSection : [],
         clientSection : [],
         counters : [],
         testimonials : [],
@@ -25,6 +26,8 @@ export const index = {
         portfolios : [],
         blog : {},
         blogs : [],
+        anggota : {},
+        anggotas : [],
         bcategories : [],
         portfolioImages : [],
         socialLinks : [],
@@ -73,6 +76,9 @@ export const index = {
         getBlogSection(state){
             return state.blogSection;
         },
+        getAnggotaSection(state){
+            return state.anggotaSection;
+        },
         getClientSection(state){
             return state.clientSection;
         },
@@ -106,11 +112,17 @@ export const index = {
         getBlogs(state){
             return state.blogs;
         },
+        getAnggotas(state){
+            return state.anggotas;
+        },
         getBcategories(state){
             return state.bcategories;
         },
         getSingleBlog(state){
             return state.blog;
+        },
+        getSingleAnggota(state){
+            return state.anggota;
         },
         getSocialLinks(state){
             return state.socialLinks;
@@ -219,6 +231,12 @@ export const index = {
                 context.commit('getBlogSection', result.data);
             })
         },
+        getAnggotaSection(context){
+            Axios.get('/api/section/anggota')
+            .then((result) => {
+                context.commit('getAnggotaSection', result.data);
+            })
+        },
         getCounters(context){
             Axios.get('/api/counters')
             .then((result) => {
@@ -279,10 +297,22 @@ export const index = {
                 context.commit('getBlogs', result.data);
             })
         },
+        getAnggotas(context, payload){
+            Axios.get('/api/anggotas?page='+payload.page+'&category='+payload.category+'&search='+payload.search,)
+            .then((result) => {
+                context.commit('getAnggotas', result.data);
+            })
+        },
         getSingleBlog(context, payload){
             Axios.get(`/api/blogs/${payload}`)
             .then(res=>{
                 context.commit('getSingleBlog', res.data)
+            })
+        },
+        getSingleAnggota(context, payload){
+            Axios.get(`/api/anggotas/${payload}`)
+            .then(res=>{
+                context.commit('getSingleAnggota', res.data)
             })
         },
         getBcategories(context, payload){
@@ -393,6 +423,9 @@ export const index = {
         getBlogSection(state, payload){
             return state.blogSection = payload;
         },
+        getAnggotaSection(state, payload){
+            return state.anggotaSection = payload;
+        },
         getClientSection(state, payload){
             return state.clientSection = payload;
         },
@@ -426,11 +459,17 @@ export const index = {
         getBlogs(state, payload){
             return state.blogs = payload;
         },
+        getAnggotas(state, payload){
+            return state.anggotas = payload;
+        },
         getBcategories(state, payload){
             return state.bcategories = payload;
         },
         getSingleBlog(state, payload){
             return state.blog = payload;
+        },
+        getSingleAnggota(state, payload){
+            return state.anggota = payload;
         },
         getSocialLinks(state, payload){
             return state.socialLinks = payload;
