@@ -63,6 +63,14 @@
                                     <template slot-scope="scope">
                                         <router-link
                                             :to="{
+                                                name: 'AnggotaView',
+                                                params: { id: scope.row.id },
+                                            }"
+                                            >
+                                            <el-button size="mini">{{ $t("View") }}</el-button>
+                                        </router-link>
+                                        <router-link
+                                            :to="{
                                                 name: 'AnggotaEdit',
                                                 params: { id: scope.row.id }
                                             }"

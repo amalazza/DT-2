@@ -5,6 +5,7 @@ export const anggota = {
     state:{
         anggotas : [],
         anggota: {},
+        AnggotaView : {},
     },
     getters: {
         anggotaList(state){
@@ -12,6 +13,9 @@ export const anggota = {
         },
         singleAnggota(state){
             return state.anggota;
+        },
+        AnggotaView(state){
+            return state.AnggotaView;
         }
     },
     actions: {
@@ -23,6 +27,12 @@ export const anggota = {
             }).catch((err) => {
 
             });
+        },
+        AnggotaView(context, payload){
+            Axios.get(`/api/admin/anggotas/${payload}`)
+            .then(res=>{
+                context.commit('AnggotaView', res.data)
+            })
         },
         editAnggota(context, payload){
             Axios.get(`/api/admin/anggotas/${payload}`)
@@ -37,6 +47,9 @@ export const anggota = {
         },
         singleAnggota(state, payload){
             return state.anggota = payload;
+        },
+        AnggotaView(state, payload){
+            return state.AnggotaView = payload;
         }
     }
 }

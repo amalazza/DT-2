@@ -19,6 +19,7 @@ import BlogAddOrUpdate from "../components/admin/blog/AddOrUpdate";
 // Import Anggota components
 import AnggotaList from "../components/admin/anggota/List";
 import AnggotaAddOrUpdate from "../components/admin/anggota/AddOrUpdate";
+import AnggotaView from "../components/admin/anggota/View";
 
 // Import Job Components
 import JobCategoryList from "../components/admin/job/category/List";
@@ -170,6 +171,7 @@ const router = new VueRouter({
         {path: "/admin/anggota",component: AnggotaList,name: "AnggotaList"},
         {path: "/admin/anggota/add",component: AnggotaAddOrUpdate,name: "AnggotaAdd"},
         {path: "/admin/anggota/edit/:id",component: AnggotaAddOrUpdate,name: "AnggotaEdit"},
+        {path: "/admin/anggota/view/:id",component: AnggotaView, name: "AnggotaView"},
 
         // Job Routes Starts
         {path: "/admin/job/category",component: JobCategoryList,name: "JobCategoryList"},
