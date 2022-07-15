@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2022 at 05:03 PM
+-- Generation Time: Jul 15, 2022 at 09:38 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -20,6 +20,48 @@ SET time_zone = "+00:00";
 --
 -- Database: `vue_omnimart`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `anggotas`
+--
+
+CREATE TABLE `anggotas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tanggal_lahir` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nik` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pekerjaan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rw` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kelurahan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kecamatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kabupaten_kota` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `korwil` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tps` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ktp_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_4` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `question_5` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `anggotas`
+--
+
+INSERT INTO `anggotas` (`id`, `nama`, `slug`, `gender`, `tanggal_lahir`, `nik`, `pekerjaan`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `korwil`, `tps`, `ktp_image`, `question_1`, `question_2`, `question_3`, `question_4`, `question_5`, `user_id`, `created_at`, `updated_at`) VALUES
+(3, 'bambang sutisno wadoyo', '3', 'Laki-laki', 'Wed Feb 17 1999 00:00:00 GMT+0700 (Western Indonesia Time)', '12345678765', 'ASN', 'Brebes', '2', '3', 'Rawapanjang', 'Bojonggede', 'Bogor', '33', '22', '1657793344815288441.png', 'Ya', 'Tidak Kenal', 'Belum Memuaskan', 'null', 'null', 1, '2022-07-14 01:28:50', '2022-07-14 03:09:04'),
+(4, 'siti nurbaya a', '4', 'Perempuan', 'Wed Oct 16 1996 00:00:00 GMT+0700 (Western Indonesia Time)', '123456543', 'Wiraswasta', 'bogor', '3', '3', 'Lainnya', 'Lainnya', 'Lainnya', '99', '33', '1657793318502437164.jpeg', 'Ya', 'Kenal', 'Suka', 'null', 'null', 1, '2022-07-14 01:35:30', '2022-07-14 03:08:38'),
+(5, 'azza wahyu', '', 'Perempuan', 'Thu Feb 08 1990 00:00:00 GMT+0700 (Western Indonesia Time)', '2222222222222222', 'Pelajar', 'jakarta', '3', '3', 'Rawapanjang', 'Bojonggede', 'Jakarta', '7', '3', '1657793423647331626.png', 'Tidak', 'Kenal', 'Belum Memuaskan', NULL, NULL, 1, '2022-07-14 03:10:23', '2022-07-14 03:10:23');
 
 -- --------------------------------------------------------
 
@@ -589,7 +631,7 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(82, 'App\\Models\\User', 1, 'auth_token', '7e90fda329a895576f637d2a0c7d21ff93ebe69194576fc5a14d24a9904f09a8', '[\"*\"]', NULL, '2022-06-15 07:17:56', '2022-06-15 07:17:56');
+(124, 'App\\Models\\User', 1, 'authToken', '77af7cba997854d27e4302e94cf3d9d1401849170a3fa5c58c0eb03f2bbe8564', '[\"*\"]', NULL, '2022-07-15 00:12:52', '2022-07-15 00:12:52');
 
 -- --------------------------------------------------------
 
@@ -687,6 +729,28 @@ INSERT INTO `quotes` (`id`, `name`, `email`, `phone`, `country`, `budget`, `skyp
 (8, 'Nam libero nisi cupi', 'mmm@gmail.com', '11111', 'Enim ducimus ab est', 'Sit mollitia proide', 'Illo quas aut quisqu', 'Sint ut consequatur', '164876323828622233.zip', 'Minim adipisicing co', '0', '2022-03-31 15:47:18', '2022-03-31 15:47:18'),
 (9, 'Dolor sit quos sit', 'rrr@gmail.com', '3333', 'Ullamco aut in nostr', 'Ea ullamco at odit q', 'Rem officia enim sin', 'Lorem doloremque qui', '16487637951659006953.zip', 'Irure omnis aut aper', '0', '2022-03-31 15:56:35', '2022-03-31 15:56:35'),
 (15, 'Mamunur Rashid', 'mamun@gmail.com', '222222', 'BD', '300', '345', 'Test quote', '16547117302139891061.zip', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '0', '2022-06-08 12:08:50', '2022-06-08 12:08:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Super Admin', NULL, NULL),
+(2, 'Author', NULL, NULL),
+(3, 'Editor', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -839,7 +903,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `theme_version`, `website_title`, `base_color`, `header_logo_dark`, `footer_logo`, `fav_icon`, `breadcrumb_image`, `number`, `email`, `contactemail`, `address`, `footer_text`, `meta_keywords`, `meta_description`, `copyright_text`, `opening_hours`, `footer_bg_image`, `hero_section_video_link`, `preloader_icon`, `preloader_bg_color`, `hero_slider_overlay_color`, `hero_slider_overlay_color_opacity`, `created_at`, `updated_at`) VALUES
-(1, '1', 'VueBusiness - Multipurpose Business CMS VueJS (SPA)', '#FF5200', '165513169990112091.png', '16552983391633809479.png', '165513169925286017.png', '16288382061796353603.jpg', '[\"123456789\",\"587434554\"]', '[\"demomail@gmail.com\",\"newdemomain@gmail.com\"]', 'mamun@gmail.com', 'Uttara, Dhaka, Bangladesh', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', '[\"Laravel\",\"Vue\",\"SPA\",\"Business\",\"Multipurpose Business \",\"CMS\",\"VueBusiness\"]', 'VueBusiness - Multipurpose Business CMS. It gives you infinite possibilities to make your site.  If you have planned to buy a multipurpose business CMS You can choose VueBusiness as the most suitable platform.', 'Copyright 2022.  By GeniusDevs', '9:00 AM -  5:00 PM', '1628228063314748256.jpg', 'xZHWQvza4QzrSjtS.mp4', NULL, NULL, NULL, '1', NULL, '2022-06-15 07:14:40');
+(1, '2', 'CALEG DPRD KOTA TANGERANG', '#74927A', '1657863036252906773.png', '16552983391633809479.png', '16578629294884009.png', '16288382061796353603.jpg', '[\"123456789\",\"587434554\"]', '[\"demomail@gmail.com\",\"newdemomain@gmail.com\"]', 'mamun@gmail.com', 'Uttara, Dhaka, Bangladesh', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', '[\"null\"]', 'Website data entry untuk kota Tangerang', 'Copyright 2022.  By GeniusDevs', '9:00 AM -  5:00 PM', '1628228063314748256.jpg', 'xZHWQvza4QzrSjtS.mp4', NULL, NULL, NULL, '1', NULL, '2022-07-14 22:32:30');
 
 -- --------------------------------------------------------
 
@@ -983,31 +1047,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `image`, `name`, `email`, `email_verified_at`, `role_id`,  `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '16549435621395251829.jpg', 'Admin', 'admin@gmail.com', NULL, 1, '$2y$10$7r1MP6a0xvUmB5qiaxWzNO08RqcJioZenQlB0SxFVO8vFntu1LXzS', 'TKT2xg2TwP4W2oqEjZbviTWTmDw6LOkHhPK98g1fBCv1BKbOUtSYVs4UMnGC', NULL, '2022-06-11 05:12:55');
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Super Admin', NULL, NULL),
-(2, 'Author', NULL, NULL),
-(3, 'Editor', NULL, NULL);
+INSERT INTO `users` (`id`, `image`, `name`, `email`, `email_verified_at`, `role_id`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, '1657638357310398159.jpg', 'Admin', 'admin@gmail.com', NULL, 1, '$2y$10$7r1MP6a0xvUmB5qiaxWzNO08RqcJioZenQlB0SxFVO8vFntu1LXzS', 'PIHesRO5jPPmC5dPQ9kURv3Lq1tXtVJ0xhbg57J9lNjiytJn7OghTmpkrtUb', NULL, '2022-07-12 08:05:57'),
+(2, '16576383271403288810.webp', 'mala', 'mala@gmail.com', NULL, 2, '$2y$10$0BVDElrAWOQBzeZWbcsYHOfLQf726i8EaQB6iDU62iDKTYjf38OB2', NULL, '2022-07-12 07:39:16', '2022-07-12 08:05:27');
 
 -- --------------------------------------------------------
 
@@ -1115,6 +1157,14 @@ INSERT INTO `why_chooses` (`id`, `title`, `icon`, `text`, `status`, `created_at`
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `anggotas`
+--
+ALTER TABLE `anggotas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `anggotas_slug_unique` (`slug`),
+  ADD KEY `anggotas_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `bcategories`
@@ -1264,6 +1314,12 @@ ALTER TABLE `quotes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sectiontitles`
 --
 ALTER TABLE `sectiontitles`
@@ -1306,18 +1362,12 @@ ALTER TABLE `testimonials`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD FOREIGN KEY (`role_id`) REFERENCES `roles`(`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `role_id` (`role_id`);
 
 --
 -- Indexes for table `visibilities`
@@ -1334,6 +1384,12 @@ ALTER TABLE `why_chooses`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `anggotas`
+--
+ALTER TABLE `anggotas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `bcategories`
@@ -1453,7 +1509,7 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `portfolios`
@@ -1519,7 +1575,7 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `visibilities`
@@ -1532,6 +1588,22 @@ ALTER TABLE `visibilities`
 --
 ALTER TABLE `why_chooses`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `anggotas`
+--
+ALTER TABLE `anggotas`
+  ADD CONSTRAINT `anggotas_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
