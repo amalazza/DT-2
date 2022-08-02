@@ -162,6 +162,56 @@
                                             </span>
                                         </el-form-item>
 
+                                        <el-form-item :label="`${$t('Kabupaten / Kota')} *`">
+                                            <el-select
+                                                v-model="form.kabupaten_kota"
+                                                :placeholder="$t('Pilih Kabupaten / Kota')"
+                                            >
+                                                <el-option
+                                                    key="Kota Tangerang"
+                                                    label="Kota Tangerang"
+                                                    value="Kota Tangerang"
+                                                >
+                                                </el-option>
+                                            </el-select>
+                                            <span
+                                                class="text-danger d-block mb-2"
+                                                v-if="errors.kabupaten_kota"
+                                            >
+                                                {{ errors.kabupaten_kota[0] }}
+                                            </span>
+                                        </el-form-item>
+
+                                        <div class="el-form-item">
+                                            <label for="kecamatan" class="el-form-item__label">Kecamatan *</label>
+                                            <select class="form-control" id="kecamatan" name="kecamatan"  @focus="getKecamatanKd()" v-model="form.kecamatan">
+                                                <option value="">Pilih Kecamatan</option>
+                                                <option v-for="i in bkecamatans" :key="i.kecamatan_id" :value="i.kecamatan" :data-rc="i.kecamatan_kd">
+                                                {{ i.kecamatan }}
+                                                </option>
+                                            </select>
+                                        </div>
+
+                                        <el-form-item :label="`${$t('Kelurahan')} *`">
+                                            <el-select
+                                                v-model="form.kelurahan"
+                                                :placeholder="$t('Pilih Kelurahan')"
+                                            >
+                                                <el-option
+                                                    v-for="i in bkelurahans.kelurahan" 
+                                                    :key="i.kelurahan_id" 
+                                                    :value="i.kelurahan_desa" 
+                                                    :label="i.kelurahan_desa"
+                                                ></el-option>
+                                            </el-select>
+                                            <span
+                                                class="text-danger"
+                                                v-if="errors.kelurahan"
+                                            >
+                                                {{ errors.kelurahan[0] }}
+                                            </span>
+                                        </el-form-item>
+
                                         <el-form-item :label="`${$t('RT')} *`">
                                             <el-select
                                                 v-model="form.rt"
@@ -259,96 +309,6 @@
                                                 v-if="errors.rw"
                                             >
                                                 {{ errors.rw[0] }}
-                                            </span>
-                                        </el-form-item>
-
-                                        <el-form-item :label="`${$t('Kelurahan')} *`">
-                                            <el-select
-                                                v-model="form.kelurahan"
-                                                :placeholder="$t('Pilih Kelurahan')"
-                                            >
-                                                <el-option
-                                                    key="Rawapanjang"
-                                                    label="Rawapanjang"
-                                                    value="Rawapanjang"
-                                                >
-                                                </el-option>
-                                                <el-option
-                                                    key="Lainnya"
-                                                    label="Lainnya"
-                                                    value="Lainnya"
-                                                >
-                                                </el-option>
-                                            </el-select>
-                                            <span
-                                                class="text-danger d-block mb-2"
-                                                v-if="errors.kelurahan"
-                                            >
-                                                {{ errors.kelurahan[0] }}
-                                            </span>
-                                        </el-form-item>
-
-                                        <el-form-item :label="`${$t('Kecamatan')} *`">
-                                            <el-select
-                                                v-model="form.kecamatan"
-                                                :placeholder="$t('Pilih Kecamatan')"
-                                            >
-                                                <el-option
-                                                    key="Bojonggede"
-                                                    label="Bojonggede"
-                                                    value="Bojonggede"
-                                                >
-                                                </el-option>
-                                                <el-option
-                                                    key="Lainnya"
-                                                    label="Lainnya"
-                                                    value="Lainnya"
-                                                >
-                                                </el-option>
-                                            </el-select>
-                                            <span
-                                                class="text-danger d-block mb-2"
-                                                v-if="errors.kecamatan"
-                                            >
-                                                {{ errors.kecamatan[0] }}
-                                            </span>
-                                        </el-form-item>
-
-                                        <el-form-item :label="`${$t('Kabupaten / Kota')} *`">
-                                            <el-select
-                                                v-model="form.kabupaten_kota"
-                                                :placeholder="$t('Pilih Kabupaten / Kota')"
-                                            >
-                                                <el-option
-                                                    key="Bogor"
-                                                    label="Bogor"
-                                                    value="Bogor"
-                                                >
-                                                </el-option>
-                                                <el-option
-                                                    key="Depok"
-                                                    label="Depok"
-                                                    value="Depok"
-                                                >
-                                                </el-option>
-                                                <el-option
-                                                    key="Jakarta"
-                                                    label="Jakarta"
-                                                    value="Jakarta"
-                                                >
-                                                </el-option>
-                                                <el-option
-                                                    key="Lainnya"
-                                                    label="Lainnya"
-                                                    value="Lainnya"
-                                                >
-                                                </el-option>
-                                            </el-select>
-                                            <span
-                                                class="text-danger d-block mb-2"
-                                                v-if="errors.kabupaten_kota"
-                                            >
-                                                {{ errors.kabupaten_kota[0] }}
                                             </span>
                                         </el-form-item>
 
@@ -503,13 +463,55 @@ export default {
                 question_3: "",
                 question_4: "",
                 question_5: "",
-            }
+            },
+            bkecamatans: [],
+            bkelurahans: []
         };
     },
     components: {
         ImageShow
     },
     methods: {
+        getKecamatan() {
+            var axios = require('axios');
+            var config = {
+                method: 'get',
+                url: 'https://jaja.id/backend/master/kecamatan?city=456',
+                headers: { }
+            };
+
+            axios(config)
+            .then((response)=>{
+                this.bkecamatans = response.data.kecamatan
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+        getKecamatanKd() {
+            var e = document.getElementById("kecamatan");
+            var option= e.options[e.selectedIndex];
+            var kecamatan_kd = option.getAttribute("data-rc");
+            // this.reqUpdateAddr.districtKd = kecamatan_kd
+            this.getKelurahan(kecamatan_kd)
+        },
+        getKelurahan(districtKd){
+            var axios = require('axios');
+
+            var config = {
+            method: 'get',
+            url: `https://jaja.id/backend/master/kelurahan?kd_kec=${districtKd}`,
+            headers: { }
+            };
+
+            axios(config)
+            .then((response)=>{
+                this.bkelurahans = response.data
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        },
         onFileSelected(event) {
             let file = event.target.files[0];
             if (file.size > 1048770) {
@@ -620,7 +622,7 @@ export default {
         }
     },
     created() {
-        // this.anggotaCategoryListAll();
+        this.getKecamatan();
         if (this.$route.params.id) {
             this.edit();
         }
