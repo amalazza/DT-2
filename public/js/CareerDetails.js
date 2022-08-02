@@ -865,7 +865,7 @@ var render = function () {
               _c("ul", { staticClass: "post-meta" }, [
                 _c("li", [
                   _c("i", { staticClass: "fal fa-user" }),
-                  _vm._v(" " + _vm._s(_vm.$t("By Admin"))),
+                  _vm._v(" By " + _vm._s(_vm.anggota.user_name)),
                 ]),
                 _vm._v(" "),
                 _c("li", [

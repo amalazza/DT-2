@@ -3266,7 +3266,9 @@ var render = function () {
                               _c("ul", { staticClass: "post-meta" }, [
                                 _c("li", [
                                   _c("span", [
-                                    _vm._v("By " + _vm._s(anggota.user) + ","),
+                                    _vm._v(
+                                      "By " + _vm._s(anggota.user_name) + ","
+                                    ),
                                   ]),
                                 ]),
                                 _vm._v(" "),

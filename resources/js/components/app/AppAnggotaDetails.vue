@@ -13,7 +13,7 @@
                 {{ anggota.nama }}
               </h3>
               <ul class="post-meta">
-                <li><i class="fal fa-user"></i> {{ $t("By Admin") }}</li>
+                <li><i class="fal fa-user"></i> By {{anggota.user_name}}</li>
                 <li>
                   <i class="fal fa-calendar-alt"></i
                   >{{ anggota.created_at | timeFormat }}
