@@ -1,9 +1,9 @@
 <template>
-  <div class="anggota-area portfolio-page section-gap">
+  <div class="blog-area portfolio-page section-gap">
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
-          <div class="row justify-content-center">
+          <div class="row justify-content-center" v-if="anggotas.data.length > 0">
             <div
               v-for="(anggota, i) in anggotas.data"
               :key="i"
@@ -46,6 +46,9 @@
               </div>
             </div>
           </div>
+          <div class="row justify-content-center" v-else>
+            <h2>Data Tidak Ditemukan</h2>
+          </div>
           <template v-if="anggotas.meta">
             <div class="row" v-if="anggotas.meta.total > 6">
               <div class="col-lg-12 text-center" v-if="anggotas.meta">
@@ -63,7 +66,7 @@
             </div>
           </template>
         </div>
-        <div class="col-lg-4 anggota-sidebar order-first order-lg-last">
+        <div class="col-lg-4 blog-sidebar order-first order-lg-last">
           <div class="widget search-widget">
             <h4 class="widget-title">{{ $t("Search Anggota") }}</h4>
             <div class="input-box">
@@ -78,24 +81,24 @@
             </div>
           </div>
           <div class="widget categories-widget">
-            <h4 class="widget-title">{{ $t("All Categories") }}</h4>
+            <h4 class="widget-title">{{ $t("Kecamatan") }}</h4>
             <ul>
               <li>
                 <a
                   @click.prevent="resortAllAnggota"
-                  :class="currentBcategory == '' ? 'active' : ''"
+                  :class="currentKecamatan == '' ? 'active' : ''"
                   href="#"
                   class=""
                   >{{ $t("All") }}
                 </a>
               </li>
-              <li v-for="(bcategory, i) in bcategories" :key="i">
+              <li v-for="(bkecamatan, i) in bkecamatans" :key="i">
                 <a
                   href="#"
-                  :class="currentBcategory == bcategory.slug ? 'active' : ''"
-                  @click.prevent="anggotaByCategory(bcategory.slug)"
+                  :class="currentKecamatan == bkecamatan.kecamatan ? 'active' : ''"
+                  @click.prevent="anggotaByCategory(bkecamatan.kecamatan)"
                   class=""
-                  >{{ bcategory.name }}</a
+                  >{{ bkecamatan.kecamatan }}</a
                 >
               </li>
             </ul>
@@ -121,9 +124,10 @@ export default {
   data() {
     return {
       currentPage: 1,
-      currentBcategory: "",
+      currentKecamatan: "",
       number: [],
       anggotaSearchText: "",
+      bkecamatans: []
     };
   },
   methods: {
@@ -133,23 +137,23 @@ export default {
     getAnggotas() {
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText,
       });
     },
     handleCurrentChange() {
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText,
       });
     },
-    anggotaByCategory(bcategory) {
-      this.currentBcategory = bcategory;
+    anggotaByCategory(bkecamatan) {
+      this.currentKecamatan = bkecamatan;
       this.currentPage = 1;
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText,
       });
     },
@@ -157,31 +161,49 @@ export default {
       this.currentPage = 1;
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText,
       });
     },
     resortAllAnggota() {
       this.currentPage = 1;
-      this.currentBcategory = "";
+      this.currentKecamatan = "";
       this.anggotaSearchText = "";
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText,
       });
     },
+    getKecamatan() {
+      var axios = require('axios');
+      var config = {
+        method: 'get',
+        url: 'https://jaja.id/backend/master/kecamatan?city=456',
+        headers: { }
+      };
+
+      axios(config)
+      .then((response)=>{
+        this.bkecamatans = response.data.kecamatan
+        // console.log(this.kecamatan);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
   },
   computed: {
     ...mapGetters({
       anggotas: "index/getAnggotas",
-      bcategories: "index/getBcategories",
+      // bkecamatans: "index/getBcategories",
       socialLinks: "index/getSocialLinks",
     }),
   },
   created() {
     this.getAnggotas();
-    this.getBcategories();
+    // this.getBcategories();
+    this.getKecamatan();
   },
 };
 </script>

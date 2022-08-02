@@ -376,7 +376,7 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu tau PKB?')} `">
+                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu tau NASDEM?')} `">
                                             <el-radio-group v-model="form.question_1">
                                                 <el-radio 
                                                     key="Ya"
@@ -397,7 +397,7 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu kenal CALEG PKB Ibu Hj. Nur Nadlifah nomor urut 2?')} `">
+                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu kenal CALEG NASDEM Ibu Hj. Nur Nadlifah nomor urut 2?')} `">
                                             <el-radio-group v-model="form.question_2">
                                                 <el-radio 
                                                     key="Kenal"
@@ -418,7 +418,7 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu suka dengan PKB?')} `">
+                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu suka dengan NASDEM?')} `">
                                             <el-radio-group v-model="form.question_3">
                                                 <el-radio 
                                                     key="Suka"

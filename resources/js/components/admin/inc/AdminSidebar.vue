@@ -104,7 +104,7 @@
                     <p>{{ $t("Social Link") }}</p>
                   </router-link>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <router-link
                     :to="{ name: 'Visibility' }"
                     class="nav-link"
@@ -113,7 +113,7 @@
                     <i class="far fa-circle nav-icon"></i>
                     <p>{{ $t("Visibility") }}</p>
                   </router-link>
-                </li>
+                </li> -->
               </ul>
             </li>
             <!-- general setting -->
@@ -155,7 +155,7 @@
                     <p>{{ $t("Theme") }}</p>
                   </router-link>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <router-link
                     :to="{ name: 'MailConfiguration' }"
                     class="nav-link"
@@ -164,7 +164,7 @@
                     <i class="far fa-circle nav-icon"></i>
                     <p>{{ $t("Mail Configuration") }}</p>
                   </router-link>
-                </li>
+                </li> -->
               </ul>
             </li>
             <!-- homepage -->
@@ -677,7 +677,7 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <router-link
                     :to="{ name: 'HistoryList' }"
                     class="nav-link"
@@ -740,7 +740,7 @@
                     <i class="far fa-circle nav-icon"></i>
                     <p>{{ $t("Portfolio") }}</p>
                   </router-link>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <router-link
                     :to="{ name: 'ContactPage' }"
@@ -754,7 +754,7 @@
               </ul>
             </li>
             <!-- gallery -->
-            <li
+            <!-- <li
               class="nav-item has-treeview"
               :class="
                 $route.name == 'GalleryList' ||
@@ -801,9 +801,9 @@
                   </router-link>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <!-- job -->
-            <li
+            <!-- <li
               class="nav-item has-treeview"
               :class="
                 $route.name == 'JobList' || $route.name == 'JobCategoryList'
@@ -858,9 +858,9 @@
                   </router-link>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <!-- blog -->
-            <li
+            <!-- <li
               class="nav-item has-treeview"
               :class="
                 $route.name == 'BlogList' || $route.name == 'BlogCategoryList'
@@ -905,19 +905,19 @@
                   </router-link>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <!-- quote -->
-            <li class="nav-item no-treeview">
+            <!-- <li class="nav-item no-treeview">
               <router-link :to="{ name: 'AllQuote' }" class="nav-link">
                 <i class="fas fa-quote-left"></i>
                 <p>
                   {{ $t("Quote") }}
                 </p>
               </router-link>
-            </li>
+            </li> -->
 
             <!-- subscribers -->
-            <li
+            <!-- <li
               class="nav-item has-treeview"
               :class="
                 $route.name == 'Subscribers' || $route.name == 'MailToSubscribers'
@@ -963,7 +963,7 @@
                   </router-link>
                 </li>
               </ul>
-            </li>
+            </li> -->
             <!-- footer -->
             <li
               class="nav-item has-treeview"
@@ -1024,14 +1024,14 @@
               </ul>
             </li>
             <!-- language -->
-            <li class="nav-item no-treeview">
+            <!-- <li class="nav-item no-treeview">
               <router-link :to="{ name: 'Language' }" class="nav-link">
                 <i class="fas fa-globe-americas"></i>
                 <p>
                   {{ $t("Language") }}
                 </p>
               </router-link>
-            </li>
+            </li> -->
 
           </div>
 
