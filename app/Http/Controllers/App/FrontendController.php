@@ -419,7 +419,7 @@ class FrontendController extends Controller
     }
 
     public function blogDetails($slug){
-        $blogDetails = Blog::where('slug', $slug)->first();
+        $blogDetails = Blog::where('nama', $slug)->first();
         return new BlogResource($blogDetails);
     }
     public function anggotaDetails($slug){

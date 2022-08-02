@@ -995,6 +995,22 @@ var render = function () {
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
+                              _vm._v(_vm._s(_vm.$t("KTP"))),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("img", {
+                                staticClass: "tImg",
+                                attrs: {
+                                  src: "/uploads/" + _vm.anggota.ktp_image,
+                                  alt: "",
+                                },
+                              }),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", { attrs: { width: "35%" } }, [
                               _vm._v(
                                 _vm._s(_vm.$t("Apakah Bapak / Ibu tau NASDEM?"))
                               ),

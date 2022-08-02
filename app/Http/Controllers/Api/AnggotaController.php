@@ -59,7 +59,7 @@ class AnggotaController extends Controller
 
         $anggota = new Anggota();
         $anggota->nama=$request->nama;
-        $anggota->slug=Str::slug($request->nik);
+        $anggota->slug=Str::slug($request->nama);
         $anggota->gender=$request->gender;
         $anggota->tanggal_lahir=$request->tanggal_lahir;
         $anggota->nik=$request->nik;
@@ -139,7 +139,7 @@ class AnggotaController extends Controller
 
         $anggota = Anggota::findOrFail($id);
         $anggota->nama=$request->nama;
-        $anggota->slug=Str::slug($request->nik);
+        $anggota->slug=Str::slug($request->nama);
         $anggota->gender=$request->gender;
         $anggota->tanggal_lahir=$request->tanggal_lahir;
         $anggota->nik=$request->nik;

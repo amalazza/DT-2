@@ -76,7 +76,7 @@
                         <td width="35%">{{ $t("TPS") }}</td>
                         <td>{{ anggota.tps }}</td>
                         </tr>
-                        <!-- <tr>
+                        <tr>
                         <td width="35%">{{ $t("KTP") }}</td>
                         <td>
                             <img
@@ -85,7 +85,7 @@
                                 class="tImg"
                             />
                         </td>
-                        </tr> -->
+                        </tr>
                         <tr>
                         <td width="35%">{{ $t("Apakah Bapak / Ibu tau NASDEM?") }}</td>
                         <td>{{ anggota.question_1 }}</td>
