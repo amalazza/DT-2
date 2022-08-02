@@ -333,14 +333,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       currentPage: 1,
-      currentBcategory: "",
+      currentKecamatan: "",
       number: [],
-      anggotaSearchText: ""
+      anggotaSearchText: "",
+      bkecamatans: []
     };
   },
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)({
@@ -349,23 +353,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getAnggotas: function getAnggotas() {
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText
       });
     },
     handleCurrentChange: function handleCurrentChange() {
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText
       });
     },
-    anggotaByCategory: function anggotaByCategory(bcategory) {
-      this.currentBcategory = bcategory;
+    anggotaByCategory: function anggotaByCategory(bkecamatan) {
+      this.currentKecamatan = bkecamatan;
       this.currentPage = 1;
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText
       });
     },
@@ -373,29 +377,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.currentPage = 1;
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText
       });
     },
     resortAllAnggota: function resortAllAnggota() {
       this.currentPage = 1;
-      this.currentBcategory = "";
+      this.currentKecamatan = "";
       this.anggotaSearchText = "";
       this.$store.dispatch("index/getAnggotas", {
         page: this.currentPage,
-        category: this.currentBcategory,
+        kecamatan: this.currentKecamatan,
         search: this.anggotaSearchText
+      });
+    },
+    getKecamatan: function getKecamatan() {
+      var _this = this;
+
+      var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+      var config = {
+        method: 'get',
+        url: 'https://jaja.id/backend/master/kecamatan?city=456',
+        headers: {}
+      };
+      axios(config).then(function (response) {
+        _this.bkecamatans = response.data.kecamatan; // console.log(this.kecamatan);
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }),
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
     anggotas: "index/getAnggotas",
-    bcategories: "index/getBcategories",
+    // bkecamatans: "index/getBcategories",
     socialLinks: "index/getSocialLinks"
   })),
   created: function created() {
-    this.getAnggotas();
-    this.getBcategories();
+    this.getAnggotas(); // this.getBcategories();
+
+    this.getKecamatan();
   }
 });
 
@@ -3198,74 +3219,105 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "anggota-area portfolio-page section-gap" }, [
+  return _c("div", { staticClass: "blog-area portfolio-page section-gap" }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c(
           "div",
           { staticClass: "col-lg-8" },
           [
-            _c(
-              "div",
-              { staticClass: "row justify-content-center" },
-              _vm._l(_vm.anggotas.data, function (anggota, i) {
-                return _c(
+            _vm.anggotas.data.length > 0
+              ? _c(
                   "div",
-                  {
-                    key: i,
-                    staticClass: "col-md-6 about-contnent wow fadeInUp",
-                    attrs: { "data-wow-delay": "0.3s" },
-                  },
-                  [
-                    _c("div", { staticClass: "latest-news-box mt-30" }, [
-                      _c("div", { staticClass: "post-thumb text-center" }, [
-                        _c("img", {
-                          directives: [
-                            {
-                              name: "lazy",
-                              rawName: "v-lazy",
-                              value: "/uploads/" + anggota.ktp_image,
-                              expression: "`/uploads/${anggota.ktp_image}`",
-                            },
-                          ],
-                          staticStyle: {
-                            "max-height": "100%",
-                            "max-width": "100%",
-                            width: "auto",
-                            height: "20vw",
-                          },
-                        }),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "post-content" },
-                        [
-                          _c("ul", { staticClass: "post-meta" }, [
-                            _c("li", [
-                              _c("span", [
-                                _vm._v("By " + _vm._s(anggota.user) + ","),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c("li", [
-                              _c("span", [
-                                _vm._v(
-                                  _vm._s(
-                                    _vm._f("timeFormat")(anggota.created_at)
-                                  )
-                                ),
-                              ]),
-                            ]),
+                  { staticClass: "row justify-content-center" },
+                  _vm._l(_vm.anggotas.data, function (anggota, i) {
+                    return _c(
+                      "div",
+                      {
+                        key: i,
+                        staticClass: "col-md-6 about-contnent wow fadeInUp",
+                        attrs: { "data-wow-delay": "0.3s" },
+                      },
+                      [
+                        _c("div", { staticClass: "latest-news-box mt-30" }, [
+                          _c("div", { staticClass: "post-thumb text-center" }, [
+                            _c("img", {
+                              directives: [
+                                {
+                                  name: "lazy",
+                                  rawName: "v-lazy",
+                                  value: "/uploads/" + anggota.ktp_image,
+                                  expression: "`/uploads/${anggota.ktp_image}`",
+                                },
+                              ],
+                              staticStyle: {
+                                "max-height": "100%",
+                                "max-width": "100%",
+                                width: "auto",
+                                height: "20vw",
+                              },
+                            }),
                           ]),
                           _vm._v(" "),
                           _c(
-                            "h4",
-                            { staticClass: "title" },
+                            "div",
+                            { staticClass: "post-content" },
                             [
+                              _c("ul", { staticClass: "post-meta" }, [
+                                _c("li", [
+                                  _c("span", [
+                                    _vm._v("By " + _vm._s(anggota.user) + ","),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _c("li", [
+                                  _c("span", [
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm._f("timeFormat")(anggota.created_at)
+                                      )
+                                    ),
+                                  ]),
+                                ]),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "h4",
+                                { staticClass: "title" },
+                                [
+                                  _c(
+                                    "router-link",
+                                    {
+                                      attrs: {
+                                        "router-link": "",
+                                        to: {
+                                          name: "AnggotaDetails",
+                                          params: { slug: anggota.slug },
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(
+                                            anggota.nama &&
+                                              anggota.nama.length > 40
+                                              ? anggota.nama.substring(0, 40) +
+                                                  "..."
+                                              : anggota.nama
+                                          ) +
+                                          "\n                  "
+                                      ),
+                                    ]
+                                  ),
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
                               _c(
                                 "router-link",
                                 {
+                                  staticClass: "read-more-btn",
                                   attrs: {
                                     "router-link": "",
                                     to: {
@@ -3276,52 +3328,26 @@ var render = function () {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                    " +
-                                      _vm._s(
-                                        anggota.nama && anggota.nama.length > 40
-                                          ? anggota.nama.substring(0, 40) +
-                                              "..."
-                                          : anggota.nama
-                                      ) +
+                                    _vm._s(_vm.$t("Read More")) +
                                       "\n                  "
                                   ),
+                                  _c("i", {
+                                    staticClass: "fal fa-long-arrow-right",
+                                  }),
                                 ]
                               ),
                             ],
                             1
                           ),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "read-more-btn",
-                              attrs: {
-                                "router-link": "",
-                                to: {
-                                  name: "AnggotaDetails",
-                                  params: { slug: anggota.slug },
-                                },
-                              },
-                            },
-                            [
-                              _vm._v(
-                                _vm._s(_vm.$t("Read More")) +
-                                  "\n                  "
-                              ),
-                              _c("i", {
-                                staticClass: "fal fa-long-arrow-right",
-                              }),
-                            ]
-                          ),
-                        ],
-                        1
-                      ),
-                    ]),
-                  ]
+                        ]),
+                      ]
+                    )
+                  }),
+                  0
                 )
-              }),
-              0
-            ),
+              : _c("div", { staticClass: "row justify-content-center" }, [
+                  _c("h2", [_vm._v("Data Tidak Ditemukan")]),
+                ]),
             _vm._v(" "),
             _vm.anggotas.meta
               ? [
@@ -3365,7 +3391,7 @@ var render = function () {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-lg-4 anggota-sidebar order-first order-lg-last" },
+          { staticClass: "col-lg-4 blog-sidebar order-first order-lg-last" },
           [
             _c("div", { staticClass: "widget search-widget" }, [
               _c("h4", { staticClass: "widget-title" }, [
@@ -3404,7 +3430,7 @@ var render = function () {
             _vm._v(" "),
             _c("div", { staticClass: "widget categories-widget" }, [
               _c("h4", { staticClass: "widget-title" }, [
-                _vm._v(_vm._s(_vm.$t("All Categories"))),
+                _vm._v(_vm._s(_vm.$t("Kecamatan"))),
               ]),
               _vm._v(" "),
               _c(
@@ -3414,7 +3440,7 @@ var render = function () {
                     _c(
                       "a",
                       {
-                        class: _vm.currentBcategory == "" ? "active" : "",
+                        class: _vm.currentKecamatan == "" ? "active" : "",
                         attrs: { href: "#" },
                         on: {
                           click: function ($event) {
@@ -3427,24 +3453,24 @@ var render = function () {
                     ),
                   ]),
                   _vm._v(" "),
-                  _vm._l(_vm.bcategories, function (bcategory, i) {
+                  _vm._l(_vm.bkecamatans, function (bkecamatan, i) {
                     return _c("li", { key: i }, [
                       _c(
                         "a",
                         {
                           class:
-                            _vm.currentBcategory == bcategory.slug
+                            _vm.currentKecamatan == bkecamatan.kecamatan
                               ? "active"
                               : "",
                           attrs: { href: "#" },
                           on: {
                             click: function ($event) {
                               $event.preventDefault()
-                              return _vm.anggotaByCategory(bcategory.slug)
+                              return _vm.anggotaByCategory(bkecamatan.kecamatan)
                             },
                           },
                         },
-                        [_vm._v(_vm._s(bcategory.name))]
+                        [_vm._v(_vm._s(bkecamatan.kecamatan))]
                       ),
                     ])
                   }),

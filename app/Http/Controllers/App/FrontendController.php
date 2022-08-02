@@ -400,19 +400,20 @@ class FrontendController extends Controller
 
     public function anggotas(Request $request){
 
-        $category = $request->category;
+        $kecamatan = $request->kecamatan;
         $search = $request->search;
-        $catid = null;
-        if ($category == '') {
-            $catid = null;
+        // $catid = null;
+        if ($kecamatan == '') {
+            $anggotas = Anggota::when($search, function ($query, $search) {
+                return $query->where('nama', 'like', '%'.$search.'%');
+            })
+            ->paginate(6);
         }else{
-            $data['category'] = Bcategory::where('slug', $category)->firstOrFail();
-            $catid = $data['category']->id;
+            $anggotas = Anggota::when($search, function ($query, $search) {
+                return $query->where('nama', 'like', '%'.$search.'%');
+            })
+            ->where('kecamatan', $kecamatan)->orderBy('id', 'DESC')->paginate(6);
         }
-        $anggotas = Anggota::when($search, function ($query, $search) {
-                                return $query->where('nama', 'like', '%'.$search.'%');
-                            })
-                            ->orderBy('id', 'DESC')->paginate(6);
 
         return AnggotaResource::collection($anggotas);
     }

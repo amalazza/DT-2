@@ -298,7 +298,7 @@ export const index = {
             })
         },
         getAnggotas(context, payload){
-            Axios.get('/api/anggotas?page='+payload.page+'&category='+payload.category+'&search='+payload.search,)
+            Axios.get('/api/anggotas?page='+payload.page+'&kecamatan='+payload.kecamatan+'&search='+payload.search,)
             .then((result) => {
                 context.commit('getAnggotas', result.data);
             })
