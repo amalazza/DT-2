@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2022 at 09:38 AM
+-- Generation Time: Aug 04, 2022 at 08:12 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -59,9 +59,12 @@ CREATE TABLE `anggotas` (
 --
 
 INSERT INTO `anggotas` (`id`, `nama`, `slug`, `gender`, `tanggal_lahir`, `nik`, `pekerjaan`, `alamat`, `rt`, `rw`, `kelurahan`, `kecamatan`, `kabupaten_kota`, `korwil`, `tps`, `ktp_image`, `question_1`, `question_2`, `question_3`, `question_4`, `question_5`, `user_id`, `created_at`, `updated_at`) VALUES
-(3, 'bambang sutisno wadoyo', '3', 'Laki-laki', 'Wed Feb 17 1999 00:00:00 GMT+0700 (Western Indonesia Time)', '12345678765', 'ASN', 'Brebes', '2', '3', 'Rawapanjang', 'Bojonggede', 'Bogor', '33', '22', '1657793344815288441.png', 'Ya', 'Tidak Kenal', 'Belum Memuaskan', 'null', 'null', 1, '2022-07-14 01:28:50', '2022-07-14 03:09:04'),
-(4, 'siti nurbaya a', '4', 'Perempuan', 'Wed Oct 16 1996 00:00:00 GMT+0700 (Western Indonesia Time)', '123456543', 'Wiraswasta', 'bogor', '3', '3', 'Lainnya', 'Lainnya', 'Lainnya', '99', '33', '1657793318502437164.jpeg', 'Ya', 'Kenal', 'Suka', 'null', 'null', 1, '2022-07-14 01:35:30', '2022-07-14 03:08:38'),
-(5, 'azza wahyu', '', 'Perempuan', 'Thu Feb 08 1990 00:00:00 GMT+0700 (Western Indonesia Time)', '2222222222222222', 'Pelajar', 'jakarta', '3', '3', 'Rawapanjang', 'Bojonggede', 'Jakarta', '7', '3', '1657793423647331626.png', 'Tidak', 'Kenal', 'Belum Memuaskan', NULL, NULL, 1, '2022-07-14 03:10:23', '2022-07-14 03:10:23');
+(3, 'bambang sutisno wadoyo', 'bambang sutisno wadoyo', 'Laki-laki', 'Wed Feb 17 1999 00:00:00 GMT+0700 (Western Indonesia Time)', '12345678765', 'ASN', 'Brebes', '2', '3', 'Rawapanjang', 'Benda', 'Bogor', '33', '22', '1657793344815288441.png', 'Ya', 'Tidak Kenal', 'Belum Memuaskan', 'null', 'null', 1, '2022-07-14 01:28:50', '2022-07-14 03:09:04'),
+(5, 'Rahayu', 'rahayu', 'Perempuan', 'Thu Feb 08 1990 00:00:00 GMT+0700 (Western Indonesia Time)', '2222222222222222', 'Pelajar', 'jakarta', '3', '3', 'Rawapanjang', 'Bojonggede', 'Cipondoh', '7', '3', '1657793423647331626.png', 'Tidak', 'Kenal', 'Belum Memuaskan', 'null', 'null', 1, '2022-07-14 03:10:23', '2022-08-02 02:36:07'),
+(10, 'Ayu Sari Ajeng', 'ayu-sari-ajeng', 'Perempuan', 'Mon Aug 08 2022 00:00:00 GMT+0700 (Western Indonesia Time)', '33323232332', 'Pelajar', 'Griya Citayam Permai 3 Blok AA', '3', '2', 'Lainnya', 'Bojonggede', 'Depok', '3', '2', '1659423091470891677.PNG', 'Tidak', 'Tidak Kenal', 'Belum Memuaskan', 'null', 'null', 1, '2022-08-01 23:51:31', '2022-08-01 23:52:29'),
+(11, 'Joko Pinurbo', 'joko-pinurbo', 'Laki-laki', 'Wed Mar 03 1999 00:00:00 GMT+0700 (Western Indonesia Time)', '345665434', 'ASN', 'Griya Citayam', '3', '3', 'Cikokol', 'Pinang (Penang)', 'Kota Tangerang', '3', '2', '1659426258871701445.png', 'Ya', 'Kenal', 'Tidak Suka', 'null', 'null', 1, '2022-08-02 00:44:18', '2022-08-02 00:45:50'),
+(13, 'Karin Yas', 'karin-yas', 'Perempuan', 'Sun Aug 02 1998 00:00:00 GMT+0700 (Western Indonesia Time)', '9445343434', 'ASN', 'Tangerang', '3', '3', 'Cibodasari', 'Cipondoh', 'Kota Tangerang', '3', '3', '16595459751262304966.png', 'Tidak', 'Kenal', 'Tidak Suka', 'null', 'null', 2, '2022-08-03 09:59:35', '2022-08-03 22:17:10'),
+(14, 'Sekar Jati', 'sekar-jati', 'Perempuan', 'Wed Jul 04 1990 00:00:00 GMT+0700 (Western Indonesia Time)', '34554545', 'Lainnya', 'Citayam', '2', '2', 'Jatiuwung', 'Benda', 'Kota Tangerang', '3', '3', '16595899022117305306.png', 'Tidak', 'Kenal', 'Tidak Suka', 'null', 'null', 1, '2022-08-03 22:11:42', '2022-08-03 22:12:11');
 
 -- --------------------------------------------------------
 
@@ -631,7 +634,8 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `name`, `token`, `abilities`, `last_used_at`, `created_at`, `updated_at`) VALUES
-(124, 'App\\Models\\User', 1, 'authToken', '77af7cba997854d27e4302e94cf3d9d1401849170a3fa5c58c0eb03f2bbe8564', '[\"*\"]', NULL, '2022-07-15 00:12:52', '2022-07-15 00:12:52');
+(139, 'App\\Models\\User', 3, 'authToken', '87917d474fe71b7aa9f736085d862055aef8249364b1a43c5c56d5f2f0b2473a', '[\"*\"]', NULL, '2022-08-03 22:49:55', '2022-08-03 22:49:55'),
+(142, 'App\\Models\\User', 2, 'authToken', '6433f0664aba42d1cced4f2b3c4d4649d5b956d9afcf00ab00ca7e25c7751a94', '[\"*\"]', NULL, '2022-08-03 23:08:29', '2022-08-03 23:08:29');
 
 -- --------------------------------------------------------
 
@@ -903,7 +907,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `theme_version`, `website_title`, `base_color`, `header_logo_dark`, `footer_logo`, `fav_icon`, `breadcrumb_image`, `number`, `email`, `contactemail`, `address`, `footer_text`, `meta_keywords`, `meta_description`, `copyright_text`, `opening_hours`, `footer_bg_image`, `hero_section_video_link`, `preloader_icon`, `preloader_bg_color`, `hero_slider_overlay_color`, `hero_slider_overlay_color_opacity`, `created_at`, `updated_at`) VALUES
-(1, '2', 'CALEG DPRD KOTA TANGERANG', '#74927A', '1657863036252906773.png', '16552983391633809479.png', '16578629294884009.png', '16288382061796353603.jpg', '[\"123456789\",\"587434554\"]', '[\"demomail@gmail.com\",\"newdemomain@gmail.com\"]', 'mamun@gmail.com', 'Uttara, Dhaka, Bangladesh', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', '[\"null\"]', 'Website data entry untuk kota Tangerang', 'Copyright 2022.  By GeniusDevs', '9:00 AM -  5:00 PM', '1628228063314748256.jpg', 'xZHWQvza4QzrSjtS.mp4', NULL, NULL, NULL, '1', NULL, '2022-07-14 22:32:30');
+(1, '1', 'CALEG DPRD KOTA TANGERANG', '#74927A', '1657863036252906773.png', '16552983391633809479.png', '16578629294884009.png', '16288382061796353603.jpg', '[\"123456789\",\"587434554\"]', '[\"demomail@gmail.com\",\"newdemomain@gmail.com\"]', 'mamun@gmail.com', 'Uttara, Dhaka, Bangladesh', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', '[\"null\"]', 'Website data entry untuk kota Tangerang', 'Copyright 2022.  By GeniusDevs', '9:00 AM -  5:00 PM', '1628228063314748256.jpg', 'xZHWQvza4QzrSjtS.mp4', NULL, NULL, NULL, '1', NULL, '2022-07-30 21:30:10');
 
 -- --------------------------------------------------------
 
@@ -1048,8 +1052,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `image`, `name`, `email`, `email_verified_at`, `role_id`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '1657638357310398159.jpg', 'Admin', 'admin@gmail.com', NULL, 1, '$2y$10$7r1MP6a0xvUmB5qiaxWzNO08RqcJioZenQlB0SxFVO8vFntu1LXzS', 'PIHesRO5jPPmC5dPQ9kURv3Lq1tXtVJ0xhbg57J9lNjiytJn7OghTmpkrtUb', NULL, '2022-07-12 08:05:57'),
-(2, '16576383271403288810.webp', 'mala', 'mala@gmail.com', NULL, 2, '$2y$10$0BVDElrAWOQBzeZWbcsYHOfLQf726i8EaQB6iDU62iDKTYjf38OB2', NULL, '2022-07-12 07:39:16', '2022-07-12 08:05:27');
+(1, '1657638357310398159.jpg', 'Admin', 'admin@gmail.com', NULL, 1, '$2y$10$7r1MP6a0xvUmB5qiaxWzNO08RqcJioZenQlB0SxFVO8vFntu1LXzS', 'gefE90UwF2UZVpHGULgkutn0xfu4FLRMexQM28jTLgl3uTU3J2XG1y5hFjUW', NULL, '2022-07-12 08:05:57'),
+(2, '16576383271403288810.webp', 'mala', 'mala@gmail.com', NULL, 2, '$2y$10$0BVDElrAWOQBzeZWbcsYHOfLQf726i8EaQB6iDU62iDKTYjf38OB2', NULL, '2022-07-12 07:39:16', '2022-07-12 08:05:27'),
+(3, NULL, 'Susan', 'susan@gmail.com', NULL, 2, '$2y$10$yrEQhLC9m7M7UVauaXEzS.0koCj2An819j99H4wAMalXaaEuJUi3q', NULL, '2022-08-03 22:49:55', '2022-08-03 22:49:55'),
+(4, NULL, 'Joni', 'joni@gmail.com', NULL, 1, '$2y$10$WcRvuD2OufXuC0L/2sAgw.qVRSh21PCJK6nk3SILt5rixTbtn9GeG', NULL, '2022-08-03 23:03:15', '2022-08-03 23:03:15');
 
 -- --------------------------------------------------------
 
@@ -1389,7 +1395,7 @@ ALTER TABLE `why_chooses`
 -- AUTO_INCREMENT for table `anggotas`
 --
 ALTER TABLE `anggotas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `bcategories`
@@ -1509,7 +1515,7 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `portfolios`
@@ -1575,7 +1581,7 @@ ALTER TABLE `testimonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `visibilities`
