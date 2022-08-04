@@ -31,14 +31,14 @@
       <a href="#" class="nav-close"><i class="fas fa-times"></i></a>
     </div>
 
-    <div class="header-extra d-flex align-items-center">
+    <!-- <div class="header-extra d-flex align-items-center">
       <div class="nav-toggler"><span></span><span></span><span></span></div>
       <div v-if="visibility.is_quote_page" class="navbar-btn">
         <router-link :to="{ name: 'Login' }">{{
           $t("Login")
         }}</router-link>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
