@@ -11,7 +11,7 @@
                             <div class="card-tools">
                                 <el-button
                                     @click="multipleDelete"
-                                    v-if="multipleSelection.length > 0"
+                                    v-if="multipleSelection.length > 0 && adminInfox.role_id==1"
                                     type="danger"
                                     size="small"
                                     ><i class="far fa-trash-alt"></i>
@@ -62,6 +62,7 @@
                                 <el-table-column :label="`${$t('Action')}`">
                                     <template slot-scope="scope">
                                         <router-link
+                                            v-if="adminInfox.role_id==1 || adminInfox.role_id==2 "
                                             :to="{
                                                 name: 'AnggotaView',
                                                 params: { id: scope.row.id },
@@ -70,6 +71,7 @@
                                             <el-button size="mini">{{ $t("View") }}</el-button>
                                         </router-link>
                                         <router-link
+                                            v-if="adminInfox.role_id==1 "
                                             :to="{
                                                 name: 'AnggotaEdit',
                                                 params: { id: scope.row.id }
@@ -80,6 +82,7 @@
                                             >
                                         </router-link>
                                         <el-button
+                                            v-if="adminInfox.role_id==1 "
                                             size="mini"
                                             type="danger"
                                             @click="
@@ -229,7 +232,10 @@ export default {
     computed: {
         anggotas() {
             return this.$store.getters["anggota/anggotaList"];
-        }
+        },
+        adminInfox() {
+            return this.$store.getters["dashboard/getAdminInfo"];
+        },
     }
 };
 </script>

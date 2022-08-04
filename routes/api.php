@@ -65,8 +65,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum'], 'middleware
     Route::apiResources([
         'anggotas' => AnggotaController::class,
     ]);
-    Route::post('/anggotas/multiple-delete', [AnggotaController::class, 'multipleDelete']);
-    Route::post('/anggotas/update/{id}', [AnggotaController::class, 'update']);
+
 
     Route::resource('user', UserController::class);
 
@@ -77,6 +76,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum'], 'middleware
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum'], 'middleware' => ['can:isAdmin']], function(){
+
+    Route::post('/anggotas/multiple-delete', [AnggotaController::class, 'multipleDelete']);
+    Route::post('/anggotas/update/{id}', [AnggotaController::class, 'update']);
+    Route::delete('/anggotas/{id}', [AnggotaController::class, 'destroy']);
 
     Route::apiResources([
         'settings' => SettingController::class,
