@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Auth;
 use Hash;
+use App\Models\Anggota;
 use App\Models\Job;
 use App\Models\Team;
 use App\Models\User;
@@ -68,6 +69,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $anggota = Anggota::all()->count();
+        $anggotaUser = Anggota::where('user_id', \Auth::id())->count();
         $service = Service::all()->count();
         $portfolio = Portfolio::all()->count();
         $team = Team::all()->count();
@@ -83,6 +86,8 @@ class DashboardController extends Controller
         $blogPosts = Blog::with('bcategory')->orderBy('id', 'DESC')->limit(10)->get();
 
        return [
+            "anggota" => $anggota,
+            "anggotaUser" => $anggotaUser,
             "service" => $service,
             "portfolio" => $portfolio,
             "team" => $team,
