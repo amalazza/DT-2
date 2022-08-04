@@ -17,7 +17,7 @@
                 <div class="post-content">
                   <ul class="post-meta">
                     <li>
-                      <span>By {{anggota.user}},</span>
+                      <span>By {{anggota.user_name}},</span>
                     </li>
                     <li>
                       <span>{{ anggota.created_at | timeFormat }}</span>

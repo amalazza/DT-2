@@ -9,7 +9,7 @@
           >
         </div>
         <div class="card-body">
-          <p class="login-box-msg">{{ $t("Sign in to start your session") }}</p>
+          <p class="login-box-msg">{{ $t("Sign up to start your session") }}</p>
           <form action="#" method="post" @submit.prevent="register()">
             <div class="g-wrapper mb-3">
               <div class="input-group">
@@ -21,7 +21,7 @@
                 />
                 <div class="input-group-append">
                   <div class="input-group-text">
-                    <span class="fas fa-envelope"></span>
+                    <span class="fas fa-user"></span>
                   </div>
                 </div>
               </div>
@@ -47,7 +47,30 @@
                 {{ errors.email[0] }}
               </span>
             </div>
-            <input type="text" v-model="form.role_id"/>
+            <div class="g-wrapper mb-3">
+              <div class="input-group">
+                <el-select
+                    v-model="form.role_id"
+                    :placeholder="$t('Pilih Role')"
+                >
+                    <el-option
+                        key="Admin"
+                        label="Admin"
+                        value="1"
+                    >
+                    </el-option>
+                    <el-option
+                        key="User"
+                        label="User"
+                        value="2"
+                    >
+                    </el-option>
+                </el-select>
+              </div>
+              <span class="text-danger d-block mb-2" v-if="errors.role_id">
+                {{ errors.role_id[0] }}
+              </span>
+            </div>
             <div class="g-wrapper mb-3">
               <div class="input-group">
                 <input
@@ -70,7 +93,7 @@
               <!-- /.col -->
               <div class="col-12 text-center">
                 <el-button @click="register()" :loading="loading" type="primary">
-                  {{ $t("Sign In") }}</el-button
+                  {{ $t("Sign Up") }}</el-button
                 >
               </div>
               <!-- /.col -->

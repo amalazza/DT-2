@@ -404,26 +404,36 @@ class FrontendController extends Controller
         $search = $request->search;
         // $catid = null;
         if ($kecamatan == '') {
-            $anggotas = Anggota::when($search, function ($query, $search) {
-                return $query->where('nama', 'like', '%'.$search.'%');
-            })
-            ->paginate(6);
+            // $anggotas = Anggota::when($search, function ($query, $search) {
+            //     return $query->where('nama', 'like', '%'.$search.'%');
+            // })
+            // ->paginate(6);
+            $anggotas = Anggota::join('users', 'users.id', 'anggotas.user_id')
+                        ->select('users.name as user_name', 'anggotas.*')
+                        ->when($search, function ($query, $search) {
+                            return $query->where('nama', 'like', '%'.$search.'%');
+                        })
+                        ->paginate(6);
         }else{
-            $anggotas = Anggota::when($search, function ($query, $search) {
+            $anggotas = Anggota::join('users', 'users.id', 'anggotas.user_id')
+            ->select('users.name as user_name', 'anggotas.*')
+            ->when($search, function ($query, $search) {
                 return $query->where('nama', 'like', '%'.$search.'%');
             })
             ->where('kecamatan', $kecamatan)->orderBy('id', 'DESC')->paginate(6);
         }
-
+        
         return AnggotaResource::collection($anggotas);
     }
 
     public function blogDetails($slug){
-        $blogDetails = Blog::where('slug', $slug)->first();
+        $blogDetails = Blog::where('nama', $slug)->first();
         return new BlogResource($blogDetails);
     }
     public function anggotaDetails($slug){
-        $anggotaDetails = Anggota::where('slug', $slug)->first();
+        $anggotaDetails = Anggota::join('users', 'users.id', 'anggotas.user_id')
+        ->select('users.name as user_name', 'anggotas.*')
+        ->where('slug', $slug)->first();
         return new AnggotaResource($anggotaDetails);
     }
     public function clients(){

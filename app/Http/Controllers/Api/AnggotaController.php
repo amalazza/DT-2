@@ -23,7 +23,11 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        $anggotas = Anggota::orderBy('id', 'DESC')->paginate(10);
+        if (\Auth::user()->role_id == 1) {
+            $anggotas = Anggota::orderBy('id', 'DESC')->paginate(10);
+        } else {
+            $anggotas = Anggota::where('user_id', \Auth::id())->orderBy('id', 'DESC')->paginate(10);
+        }
 
         return AnggotaResource::collection($anggotas);
 
@@ -59,7 +63,7 @@ class AnggotaController extends Controller
 
         $anggota = new Anggota();
         $anggota->nama=$request->nama;
-        $anggota->slug=Str::slug($request->nik);
+        $anggota->slug=Str::slug($request->nama);
         $anggota->gender=$request->gender;
         $anggota->tanggal_lahir=$request->tanggal_lahir;
         $anggota->nik=$request->nik;
@@ -139,7 +143,7 @@ class AnggotaController extends Controller
 
         $anggota = Anggota::findOrFail($id);
         $anggota->nama=$request->nama;
-        $anggota->slug=Str::slug($request->nik);
+        $anggota->slug=Str::slug($request->nama);
         $anggota->gender=$request->gender;
         $anggota->tanggal_lahir=$request->tanggal_lahir;
         $anggota->nik=$request->nik;
@@ -161,7 +165,7 @@ class AnggotaController extends Controller
         $anggota->question_3=$request->question_3;
         $anggota->question_4=$request->question_4;
         $anggota->question_5=$request->question_5;
-        $anggota->user_id=Auth::user()->id;
+        // $anggota->user_id=Auth::user()->id;
 
         $anggota->save();
     }

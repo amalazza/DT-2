@@ -39,6 +39,8 @@ class AnggotaResource extends JsonResource
             
             'user_id' => $this->user_id,
 
+            'user_name' => $this->user_name,
+
 
             'created_at' => (string)$this->created_at,
         ];

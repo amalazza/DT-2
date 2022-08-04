@@ -1,15 +1,15 @@
 <template>
   <div class="wrapper">
-    <template v-if="$route.name !== 'AdminLogin'">
+    <template v-if="$route.name !== 'AdminLogin' && $route.name !== 'AdminRegister'">
       <admin-header></admin-header>
       <admin-sidebar></admin-sidebar>
     </template>
-    <router-view v-if="$route.name === 'AdminLogin'"></router-view>
+    <router-view v-if="$route.name === 'AdminLogin' || $route.name === 'AdminRegister'"></router-view>
     <div class="content-wrapper" v-else>
       <admin-breadcrumb></admin-breadcrumb>
       <router-view></router-view>
     </div>
-    <admin-footer v-if="$route.name !== 'AdminLogin'"></admin-footer>
+    <admin-footer v-if="$route.name !== 'AdminLogin' || $route.name !== 'AdminRegister'"></admin-footer>
   </div>
 </template>
 

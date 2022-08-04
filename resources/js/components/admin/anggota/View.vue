@@ -9,7 +9,7 @@
                 {{ $t($route.name.replace(/([A-Z])/g, " $1").trim()) }}
               </h3>
               <div class="card-tools">
-                <router-link :to="{ name: 'AllQuote' }">
+                <router-link :to="{ name: 'AnggotaList' }">
                   <el-button type="primary" size="small">
                     <i class="fas fa-angle-double-left"></i>
                     {{ $t("Back") }}
@@ -85,15 +85,15 @@
                       </td>
                     </tr>
                     <tr>
-                      <td width="35%">{{ $t("Apakah Bapak / Ibu tau PKB?") }}</td>
+                      <td width="35%">{{ $t("Apakah Bapak / Ibu tau NASDEM?") }}</td>
                       <td>{{ anggota.question_1 }}</td>
                     </tr>
                     <tr>
-                      <td width="35%">{{ $t("Apakah Bapak / Ibu kenal CALEG PKB Ibu Hj. Nur Nadlifah nomor urut 2?") }}</td>
+                      <td width="35%">{{ $t("Apakah Bapak / Ibu kenal CALEG NASDEM Ibu Hj. Nur Nadlifah nomor urut 2?") }}</td>
                       <td>{{ anggota.question_2 }}</td>
                     </tr>
                     <tr>
-                      <td width="35%">{{ $t("Apakah Bapak / Ibu suka dengan PKB?") }}</td>
+                      <td width="35%">{{ $t("Apakah Bapak / Ibu suka dengan NASDEM?") }}</td>
                       <td>{{ anggota.question_3 }}</td>
                     </tr>
                   </tbody>
