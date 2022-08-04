@@ -1035,6 +1035,15 @@
 
           </div>
 
+          <!-- register -->
+          <li class="nav-item no-treeview" v-if="isAllow">
+            <router-link :to="{ name: 'AdminRegister' }" class="nav-link">
+              <i class="fas fa-user"></i>
+              <p>
+                {{ $t("Register") }}
+              </p>
+            </router-link>
+          </li>
 
           <!-- logout -->
           <li class="nav-item no-treeview">
