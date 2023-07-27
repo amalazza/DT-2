@@ -2623,7 +2623,7 @@ div#preloader .image img {
 }
 @media (max-width: 991px) {
   .header-navigation .primary-menu li.current > a,
-.header-navigation .primary-menu li a:hover {
+  .header-navigation .primary-menu li a:hover {
     color: #fff;
   }
 }
@@ -3113,7 +3113,7 @@ div#preloader .image img {
 }
 @media (max-width: 991px) {
   .header-two .header-navigation .primary-menu li.current > a,
-.header-two .header-navigation .primary-menu li a:hover {
+  .header-two .header-navigation .primary-menu li a:hover {
     color: #fff;
   }
 }
@@ -9223,7 +9223,7 @@ div#preloader .image img {
 }
 @media (max-width: 575px) {
   .billing-details .title,
-.order-details .title {
+  .order-details .title {
     font-size: 22px;
   }
 }
