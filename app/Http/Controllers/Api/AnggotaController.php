@@ -30,7 +30,6 @@ class AnggotaController extends Controller
         }
 
         return AnggotaResource::collection($anggotas);
-
     }
 
     /**
@@ -62,31 +61,30 @@ class AnggotaController extends Controller
         // $anggota->fill($input)->save();
 
         $anggota = new Anggota();
-        $anggota->nama=$request->nama;
-        $anggota->slug=Str::slug($request->nama);
-        $anggota->gender=$request->gender;
-        $anggota->tanggal_lahir=$request->tanggal_lahir;
-        $anggota->nik=$request->nik;
-        $anggota->pekerjaan=$request->pekerjaan;
-        $anggota->alamat=$request->alamat;
-        $anggota->rt=$request->rt;
-        $anggota->rw=$request->rw;
-        $anggota->kelurahan=$request->kelurahan;
-        $anggota->kecamatan=$request->kecamatan;
-        $anggota->kabupaten_kota=$request->kabupaten_kota;
-        $anggota->korwil=$request->korwil;
-        $anggota->tps=$request->tps;
-        $anggota->ktp_image=Helper::imgStore($request->file('ktp_image'));
-        $anggota->question_1=$request->question_1;
-        $anggota->question_2=$request->question_2;
-        $anggota->question_3=$request->question_3;
-        $anggota->question_4=$request->question_4;
-        $anggota->question_5=$request->question_5;
-        $anggota->user_id=Auth::user()->id;
+        $anggota->nama = $request->nama;
+        $anggota->slug = Str::slug($request->nama);
+        $anggota->gender = $request->gender;
+        $anggota->tanggal_lahir = $request->tanggal_lahir;
+        $anggota->nik = $request->nik;
+        $anggota->pekerjaan = $request->pekerjaan;
+        $anggota->alamat = $request->alamat;
+        $anggota->rt = $request->rt;
+        $anggota->rw = $request->rw;
+        $anggota->kelurahan = $request->kelurahan;
+        $anggota->kecamatan = $request->kecamatan;
+        $anggota->kabupaten_kota = $request->kabupaten_kota;
+        $anggota->korwil = $request->korwil;
+        $anggota->tps = $request->tps;
+        $anggota->ktp_image = Helper::imgStore($request->file('ktp_image'));
+        $anggota->question_1 = $request->question_1;
+        $anggota->question_2 = $request->question_2;
+        $anggota->question_3 = $request->question_3;
+        $anggota->question_4 = $request->question_4;
+        $anggota->question_5 = $request->question_5;
+        $anggota->user_id = Auth::user()->id;
         // $anggota->user_id=$request->user_id;
 
         $anggota->save();
-
     }
 
     /**
@@ -99,7 +97,6 @@ class AnggotaController extends Controller
     {
         $anggota = Anggota::findOrFail($id);
         return new AnggotaResource($anggota);
-
     }
 
     /**
@@ -110,7 +107,6 @@ class AnggotaController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**
@@ -142,29 +138,29 @@ class AnggotaController extends Controller
 
 
         $anggota = Anggota::findOrFail($id);
-        $anggota->nama=$request->nama;
-        $anggota->slug=Str::slug($request->nama);
-        $anggota->gender=$request->gender;
-        $anggota->tanggal_lahir=$request->tanggal_lahir;
-        $anggota->nik=$request->nik;
-        $anggota->pekerjaan=$request->pekerjaan;
-        $anggota->alamat=$request->alamat;
-        $anggota->rt=$request->rt;
-        $anggota->rw=$request->rw;
-        $anggota->kelurahan=$request->kelurahan;
-        $anggota->kecamatan=$request->kecamatan;
-        $anggota->kabupaten_kota=$request->kabupaten_kota;
-        $anggota->korwil=$request->korwil;
-        $anggota->tps=$request->tps;
-        if($request->hasFile('ktp_image')){
+        $anggota->nama = $request->nama;
+        $anggota->slug = Str::slug($request->nama);
+        $anggota->gender = $request->gender;
+        $anggota->tanggal_lahir = $request->tanggal_lahir;
+        $anggota->nik = $request->nik;
+        $anggota->pekerjaan = $request->pekerjaan;
+        $anggota->alamat = $request->alamat;
+        $anggota->rt = $request->rt;
+        $anggota->rw = $request->rw;
+        $anggota->kelurahan = $request->kelurahan;
+        $anggota->kecamatan = $request->kecamatan;
+        $anggota->kabupaten_kota = $request->kabupaten_kota;
+        $anggota->korwil = $request->korwil;
+        $anggota->tps = $request->tps;
+        if ($request->hasFile('ktp_image')) {
             $anggota->ktp_image = Helper::imgUpdate($request->file('ktp_image'), $anggota->ktp_image);
         }
         // $anggota->ktp_image=Helper::imgStore($request->file('ktp_image'));
-        $anggota->question_1=$request->question_1;
-        $anggota->question_2=$request->question_2;
-        $anggota->question_3=$request->question_3;
-        $anggota->question_4=$request->question_4;
-        $anggota->question_5=$request->question_5;
+        $anggota->question_1 = $request->question_1;
+        $anggota->question_2 = $request->question_2;
+        $anggota->question_3 = $request->question_3;
+        $anggota->question_4 = $request->question_4;
+        $anggota->question_5 = $request->question_5;
         // $anggota->user_id=Auth::user()->id;
 
         $anggota->save();
@@ -188,49 +184,46 @@ class AnggotaController extends Controller
     public function multipleDelete(Request $request)
     {
 
-        foreach($request->all() as $item){
+        foreach ($request->all() as $item) {
             $id = $item['id'];
             $anggota = Anggota::findOrFail($id);
             Helper::imgDelete($anggota->ktp_image);
             $anggota->delete();
         }
-
     }
 
     public function dataValidation($request, $id = null)
     {
 
-        if($id == null){
+        if ($id == null) {
             $nama = 'required|string';
-
-        }else{
-            $nama = 'required|string,'.$id;
+        } else {
+            $nama = 'required|string,' . $id;
         }
 
         $request->validate(
             [
                 'nama' => $nama,
                 // 'slug'=> 'required',
-                'gender'=> 'required',
-                'tanggal_lahir'=> 'required',
-                'nik'=> 'required',
-                'pekerjaan'=> 'required',
-                'alamat'=> 'required',
-                'rt'=> 'required',
-                'rw'=> 'required',
-                'kelurahan'=> 'required',
-                'kecamatan'=> 'required',
-                'kabupaten_kota'=> 'required',
-                'korwil'=> 'required',
-                'tps'=> 'required',
+                'gender' => 'required',
+                'tanggal_lahir' => 'required',
+                'nik' => 'required',
+                'pekerjaan' => 'required',
+                'alamat' => 'required',
+                'rt' => 'required',
+                'rw' => 'required',
+                'kelurahan' => 'required',
+                'kecamatan' => 'required',
+                'kabupaten_kota' => 'required',
+                'korwil' => 'required',
+                'tps' => 'required',
                 // 'ktp_image'=> Helper::imgValidation($id, $request->file('ktp_image')),
-                'question_1'=> 'required',
-                'question_2'=> 'required',
-                'question_3'=> 'required',
+                'question_1' => 'required',
+                'question_2' => 'required',
+                'question_3' => 'required',
                 // 'question_4'=> 'required',
                 // 'question_5'=> 'required'
             ]
         );
-
     }
 }

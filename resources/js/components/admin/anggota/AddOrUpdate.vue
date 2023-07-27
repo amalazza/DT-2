@@ -6,13 +6,19 @@
                     <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title mt-1">
-                                {{ $t($route.name.replace(/([A-Z])/g, ' $1').trim()) }}
+                                {{
+                                    $t(
+                                        $route.name
+                                            .replace(/([A-Z])/g, " $1")
+                                            .trim()
+                                    )
+                                }}
                             </h3>
                             <div class="card-tools">
                                 <router-link :to="{ name: 'AnggotaList' }">
                                     <el-button type="primary" size="small">
                                         <i class="fas fa-angle-double-left"></i>
-                                        {{ $t('Back') }}
+                                        {{ $t("Back") }}
                                     </el-button>
                                 </router-link>
                             </div>
@@ -21,8 +27,13 @@
                         <div class="card-body">
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
-                                    <el-form label-position="top" @submit.prevent="saveOrUpdate">
-                                        <el-form-item :label="`${$t('Image')} *`">
+                                    <el-form
+                                        label-position="top"
+                                        @submit.prevent="saveOrUpdate"
+                                    >
+                                        <el-form-item
+                                            :label="`${$t('Image')} *`"
+                                        >
                                             <image-show
                                                 :routeParamsId="
                                                     $route.params.id
@@ -34,7 +45,9 @@
                                                 <label
                                                     class="custom-file-label"
                                                     for="ktp_image"
-                                                    >{{ $t('Choose Image') }}</label
+                                                    >{{
+                                                        $t("Choose Image")
+                                                    }}</label
                                                 >
                                                 <input
                                                     type="file"
@@ -51,7 +64,9 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Nama')} *`">
+                                        <el-form-item
+                                            :label="`${$t('Nama')} *`"
+                                        >
                                             <el-input
                                                 v-model="form.nama"
                                             ></el-input>
@@ -63,10 +78,14 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Gender')} *`">
+                                        <el-form-item
+                                            :label="`${$t('Gender')} *`"
+                                        >
                                             <el-select
                                                 v-model="form.gender"
-                                                :placeholder="$t('Select Gender')"
+                                                :placeholder="
+                                                    $t('Select Gender')
+                                                "
                                             >
                                                 <el-option
                                                     key="Laki-laki"
@@ -91,10 +110,10 @@
 
                                         <el-form-item label="Tanggal Lahir">
                                             <el-date-picker
-                                            v-model="form.tanggal_lahir"
-                                            type="date"
-                                            placeholder="Pilih Tanggal Lahir"
-                                            style="width: 100%"
+                                                v-model="form.tanggal_lahir"
+                                                type="date"
+                                                placeholder="Pilih Tanggal Lahir"
+                                                style="width: 100%"
                                             />
                                         </el-form-item>
 
@@ -110,10 +129,14 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Pekerjaan')} *`">
+                                        <el-form-item
+                                            :label="`${$t('Pekerjaan')} *`"
+                                        >
                                             <el-select
                                                 v-model="form.pekerjaan"
-                                                :placeholder="$t('Pilih Pekerjaan')"
+                                                :placeholder="
+                                                    $t('Pilih Pekerjaan')
+                                                "
                                             >
                                                 <el-option
                                                     key="Wiraswasta"
@@ -148,7 +171,9 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Alamat')} *`">
+                                        <el-form-item
+                                            :label="`${$t('Alamat')} *`"
+                                        >
                                             <el-input
                                                 type="textarea"
                                                 rows="4"
@@ -162,10 +187,16 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Kabupaten / Kota')} *`">
+                                        <el-form-item
+                                            :label="`${$t(
+                                                'Kabupaten / Kota'
+                                            )} *`"
+                                        >
                                             <el-select
                                                 v-model="form.kabupaten_kota"
-                                                :placeholder="$t('Pilih Kabupaten / Kota')"
+                                                :placeholder="
+                                                    $t('Pilih Kabupaten / Kota')
+                                                "
                                             >
                                                 <el-option
                                                     key="Kota Tangerang"
@@ -183,24 +214,45 @@
                                         </el-form-item>
 
                                         <div class="el-form-item">
-                                            <label for="kecamatan" class="el-form-item__label">Kecamatan *</label>
-                                            <select class="form-control" id="kecamatan" name="kecamatan"  @focus="getKecamatanKd()" v-model="form.kecamatan">
-                                                <option value="">Pilih Kecamatan</option>
-                                                <option v-for="i in bkecamatans" :key="i.kecamatan_id" :value="i.kecamatan" :data-rc="i.kecamatan_kd">
-                                                {{ i.kecamatan }}
+                                            <label
+                                                for="kecamatan"
+                                                class="el-form-item__label"
+                                                >Kecamatan *</label
+                                            >
+                                            <select
+                                                class="form-control"
+                                                id="kecamatan"
+                                                name="kecamatan"
+                                                @focus="getKecamatanKd()"
+                                                v-model="form.kecamatan"
+                                            >
+                                                <option value="">
+                                                    Pilih Kecamatan
+                                                </option>
+                                                <option
+                                                    v-for="i in bkecamatans"
+                                                    :key="i.kecamatan_id"
+                                                    :value="i.kecamatan"
+                                                    :data-rc="i.kecamatan_kd"
+                                                >
+                                                    {{ i.kecamatan }}
                                                 </option>
                                             </select>
                                         </div>
 
-                                        <el-form-item :label="`${$t('Kelurahan')} *`">
+                                        <el-form-item
+                                            :label="`${$t('Kelurahan')} *`"
+                                        >
                                             <el-select
                                                 v-model="form.kelurahan"
-                                                :placeholder="$t('Pilih Kelurahan')"
+                                                :placeholder="
+                                                    $t('Pilih Kelurahan')
+                                                "
                                             >
                                                 <el-option
-                                                    v-for="i in bkelurahans.kelurahan" 
-                                                    :key="i.kelurahan_id" 
-                                                    :value="i.kelurahan_desa" 
+                                                    v-for="i in bkelurahans.kelurahan"
+                                                    :key="i.kelurahan_id"
+                                                    :value="i.kelurahan_desa"
                                                     :label="i.kelurahan_desa"
                                                 ></el-option>
                                             </el-select>
@@ -312,7 +364,9 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Korwil')} *`">
+                                        <el-form-item
+                                            :label="`${$t('Korwil')} *`"
+                                        >
                                             <el-input
                                                 v-model="form.korwil"
                                             ></el-input>
@@ -336,17 +390,25 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu tau NASDEM?')} `">
-                                            <el-radio-group v-model="form.question_1">
-                                                <el-radio 
+                                        <el-form-item
+                                            :label="`${$t(
+                                                'Apakah Bapak / Ibu tau NASDEM?'
+                                            )} `"
+                                        >
+                                            <el-radio-group
+                                                v-model="form.question_1"
+                                            >
+                                                <el-radio
                                                     key="Ya"
                                                     label="Ya"
-                                                    value="Ya">
+                                                    value="Ya"
+                                                >
                                                 </el-radio>
-                                                <el-radio 
+                                                <el-radio
                                                     key="Tidak"
                                                     label="Tidak"
-                                                    value="Tidak">
+                                                    value="Tidak"
+                                                >
                                                 </el-radio>
                                             </el-radio-group>
                                             <span
@@ -357,17 +419,25 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu kenal CALEG NASDEM Ibu Hj. Nur Nadlifah nomor urut 2?')} `">
-                                            <el-radio-group v-model="form.question_2">
-                                                <el-radio 
+                                        <el-form-item
+                                            :label="`${$t(
+                                                'Apakah Bapak / Ibu kenal CALEG NASDEM Mochammad Pandu, SE ?'
+                                            )} `"
+                                        >
+                                            <el-radio-group
+                                                v-model="form.question_2"
+                                            >
+                                                <el-radio
                                                     key="Kenal"
                                                     label="Kenal"
-                                                    value="Kenal">
+                                                    value="Kenal"
+                                                >
                                                 </el-radio>
-                                                <el-radio 
+                                                <el-radio
                                                     key="Tidak"
                                                     label="Tidak Kenal"
-                                                    value="Tidak">
+                                                    value="Tidak"
+                                                >
                                                 </el-radio>
                                             </el-radio-group>
                                             <span
@@ -378,22 +448,31 @@
                                             </span>
                                         </el-form-item>
 
-                                        <el-form-item :label="`${$t('Apakah Bapak / Ibu suka dengan NASDEM?')} `">
-                                            <el-radio-group v-model="form.question_3">
-                                                <el-radio 
+                                        <el-form-item
+                                            :label="`${$t(
+                                                'Apakah Bapak / Ibu suka dengan NASDEM?'
+                                            )} `"
+                                        >
+                                            <el-radio-group
+                                                v-model="form.question_3"
+                                            >
+                                                <el-radio
                                                     key="Suka"
                                                     label="Suka"
-                                                    value="Suka">
+                                                    value="Suka"
+                                                >
                                                 </el-radio>
-                                                <el-radio 
+                                                <el-radio
                                                     key="Tidak"
                                                     label="Tidak Suka"
-                                                    value="Tidak">
+                                                    value="Tidak"
+                                                >
                                                 </el-radio>
-                                                <el-radio 
+                                                <el-radio
                                                     key="Belum"
                                                     label="Belum Memuaskan"
-                                                    value="Belum">
+                                                    value="Belum"
+                                                >
                                                 </el-radio>
                                             </el-radio-group>
                                             <span
@@ -404,14 +483,13 @@
                                             </span>
                                         </el-form-item>
 
-
                                         <!-- BUTTON UPDATE -->
                                         <el-button
                                             v-if="$route.params.id"
                                             @click.prevent="saveOrUpdate"
                                             type="primary"
                                             :loading="loading"
-                                            >{{ $t('Update') }}</el-button
+                                            >{{ $t("Update") }}</el-button
                                         >
                                         <!-- BUTTON SAVE -->
                                         <el-button
@@ -419,7 +497,7 @@
                                             @click.prevent="saveOrUpdate"
                                             type="primary"
                                             :loading="loading"
-                                            >{{ $t('Save') }}</el-button
+                                            >{{ $t("Save") }}</el-button
                                         >
                                     </el-form>
                                 </div>
@@ -465,65 +543,65 @@ export default {
                 question_5: "",
             },
             bkecamatans: [],
-            bkelurahans: []
+            bkelurahans: [],
         };
     },
     components: {
-        ImageShow
+        ImageShow,
     },
     methods: {
         getKecamatan() {
-            var axios = require('axios');
+            var axios = require("axios");
             var config = {
-                method: 'get',
-                url: 'https://jaja.id/backend/master/kecamatan?city=456',
-                headers: { }
+                method: "get",
+                url: "https://jaja.id/backend/master/kecamatan?city=456",
+                headers: {},
             };
 
             axios(config)
-            .then((response)=>{
-                this.bkecamatans = response.data.kecamatan
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then((response) => {
+                    this.bkecamatans = response.data.kecamatan;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
         getKecamatanKd() {
             var e = document.getElementById("kecamatan");
-            var option= e.options[e.selectedIndex];
+            var option = e.options[e.selectedIndex];
             var kecamatan_kd = option.getAttribute("data-rc");
             // this.reqUpdateAddr.districtKd = kecamatan_kd
-            this.getKelurahan(kecamatan_kd)
+            this.getKelurahan(kecamatan_kd);
         },
-        getKelurahan(districtKd){
-            var axios = require('axios');
+        getKelurahan(districtKd) {
+            var axios = require("axios");
 
             var config = {
-            method: 'get',
-            url: `https://jaja.id/backend/master/kelurahan?kd_kec=${districtKd}`,
-            headers: { }
+                method: "get",
+                url: `https://jaja.id/backend/master/kelurahan?kd_kec=${districtKd}`,
+                headers: {},
             };
 
             axios(config)
-            .then((response)=>{
-                this.bkelurahans = response.data
-            })
-            .catch(function (error) {
-            console.log(error);
-            });
+                .then((response) => {
+                    this.bkelurahans = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
         onFileSelected(event) {
             let file = event.target.files[0];
             if (file.size > 1048770) {
                 this.$notify({
-                    title: 'Success',
-                    message: 'Max Image Size 2 MB',
-                    type: 'warning'
+                    title: "Success",
+                    message: "Max Image Size 2 MB",
+                    type: "warning",
                 });
             } else {
                 this.form.ktp_image = event.target.files[0];
                 let reader = new FileReader();
-                reader.onload = event => {
+                reader.onload = (event) => {
                     this.viewImage = event.target.result;
                 };
                 reader.readAsDataURL(file);
@@ -533,31 +611,28 @@ export default {
         //     this.$store.dispatch("anggotaCategory/anggotaCategoryListAll");
         // },
         save(formData) {
-            
-
             axios
                 .post("/api/admin/anggotas", formData)
-                .then(result => {
+                .then((result) => {
                     this.loading = false;
                     this.form = null;
                     this.$router.push({ name: "AnggotaList" });
                     this.$notify({
-                        title: 'Success',
-                        message: 'Data Added Successfully',
-                        type: 'success'
+                        title: "Success",
+                        message: "Data Added Successfully",
+                        type: "success",
                     });
                 })
-                .catch(err => {
+                .catch((err) => {
                     if (err) {
                         this.loading = false;
-						this.$notify({
-                        title: "Gagal",
-                        message: err.response.data.message,
-                        type: "error",
+                        this.$notify({
+                            title: "Gagal",
+                            message: err.response.data.message,
+                            type: "error",
                         });
                     }
                     this.errors = err.response.data.errors;
-                    
                 });
         },
         update(formData) {
@@ -567,23 +642,23 @@ export default {
                     `/api/admin/anggotas/update/${this.$route.params.id}`,
                     formData
                 )
-                .then(result => {
+                .then((result) => {
                     this.loading = false;
                     this.form = null;
                     this.$router.push({ name: "AnggotaList" });
                     this.$notify({
-                        title: 'Success',
-                        message: 'Data Updated Successfully',
-                        type: 'success'
+                        title: "Success",
+                        message: "Data Updated Successfully",
+                        type: "success",
                     });
                 })
-                .catch(err => {
+                .catch((err) => {
                     if (err) {
                         this.loading = false;
-						this.$notify({
-                        title: "Gagal",
-                        message: err.response.data.message,
-                        type: "error",
+                        this.$notify({
+                            title: "Gagal",
+                            message: err.response.data.message,
+                            type: "error",
                         });
                     }
                     this.errors = err.response.data.errors;
@@ -619,7 +694,7 @@ export default {
         },
         edit() {
             this.$store.dispatch("anggota/editAnggota", this.$route.params.id);
-        }
+        },
     },
     created() {
         this.getKecamatan();
@@ -633,13 +708,13 @@ export default {
         // },
         anggota() {
             return this.$store.getters["anggota/singleAnggota"];
-        }
+        },
     },
     watch: {
         anggota() {
             this.form = this.anggota;
-        }
-    }
+        },
+    },
 };
 </script>
 

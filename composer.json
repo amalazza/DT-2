@@ -15,7 +15,8 @@
         "laravel/framework": "^8.40",
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.5",
-        "phpmailer/phpmailer": "^6.6"
+        "phpmailer/phpmailer": "^6.6",
+        "yazan/laravel-datatable": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

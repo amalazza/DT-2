@@ -9,6 +9,8 @@ import {store} from './common/store/store'
 
 Vue.component('app-master', require('./components/app/AppMaster.vue').default);
 
+Vue.component('data-table', require('@yazan.alnughnugh/vue-datatable').default);
+
 import i18n from './locales/appLocal'
 
 import library from './common/library'

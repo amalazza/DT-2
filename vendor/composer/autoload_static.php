@@ -48,6 +48,10 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'Y' => 
+        array (
+            'Yazan\\DataTable\\' => 16,
+        ),
         'W' => 
         array (
             'Whoops\\' => 7,
@@ -203,6 +207,10 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'Yazan\\DataTable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yazan/laravel-datatable/src',
         ),
         'Whoops\\' => 
         array (
@@ -595,6 +603,7 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Helpers\\Helper' => __DIR__ . '/../..' . '/app/Helpers/Helper.php',
+        'App\\Http\\Controllers\\Api\\AnggotaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AnggotaController.php',
         'App\\Http\\Controllers\\Api\\ApplicationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ApplicationController.php',
         'App\\Http\\Controllers\\Api\\BcategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/BcategoryController.php',
         'App\\Http\\Controllers\\Api\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/BlogController.php',
@@ -647,6 +656,8 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\RegisterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/RegisterRequest.php',
+        'App\\Http\\Resources\\Anggota\\AnggotaResource' => __DIR__ . '/../..' . '/app/Http/Resources/Anggota/AnggotaResource.php',
+        'App\\Http\\Resources\\Anggota\\AnggotaUserResource' => __DIR__ . '/../..' . '/app/Http/Resources/Anggota/AnggotaUserResource.php',
         'App\\Http\\Resources\\Blog\\BlogCategoryResource' => __DIR__ . '/../..' . '/app/Http/Resources/Blog/BlogCategoryResource.php',
         'App\\Http\\Resources\\Blog\\BlogResource' => __DIR__ . '/../..' . '/app/Http/Resources/Blog/BlogResource.php',
         'App\\Http\\Resources\\Client\\ClientResource' => __DIR__ . '/../..' . '/app/Http/Resources/Client/ClientResource.php',
@@ -5979,6 +5990,9 @@ class ComposerStaticInit3a2aebc879642f5fd23acbb84f1ed921
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'Yazan\\DataTable\\Commands\\DataTableCommand' => __DIR__ . '/..' . '/yazan/laravel-datatable/src/Commands/DataTableCommand.php',
+        'Yazan\\DataTable\\DataGrid' => __DIR__ . '/..' . '/yazan/laravel-datatable/src/DataGrid.php',
+        'Yazan\\DataTable\\DataTableServiceProvider' => __DIR__ . '/..' . '/yazan/laravel-datatable/src/DataTableServiceProvider.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',
