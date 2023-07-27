@@ -176,6 +176,91 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 Vue.prototype.$url = window.location.origin;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -856,23 +941,27 @@ var render = function () {
             _c("div", { staticClass: "content" }, [
               _c("h3", { staticClass: "title" }, [
                 _vm._v(
-                  "\n              " +
+                  "\n                            " +
                     _vm._s(_vm.anggota.nama) +
-                    "\n            "
+                    "\n                        "
                 ),
               ]),
               _vm._v(" "),
               _c("ul", { staticClass: "post-meta" }, [
                 _c("li", [
                   _c("i", { staticClass: "fal fa-user" }),
-                  _vm._v(" By " + _vm._s(_vm.anggota.user_name)),
+                  _vm._v(
+                    " By\n                                " +
+                      _vm._s(_vm.anggota.user_name) +
+                      "\n                            "
+                  ),
                 ]),
                 _vm._v(" "),
                 _c("li", [
                   _c("i", { staticClass: "fal fa-calendar-alt" }),
                   _vm._v(
                     _vm._s(_vm._f("timeFormat")(_vm.anggota.created_at)) +
-                      "\n              "
+                      "\n                            "
                   ),
                 ]),
               ]),
@@ -887,7 +976,11 @@ var render = function () {
                         _c("tbody", [
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Nama"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Nama")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(_vm.anggota.nama))]),
@@ -895,25 +988,47 @@ var render = function () {
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Gender"))),
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.gender))]),
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Tanggal Lahir"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Gender")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("td", [
-                              _vm._v(_vm._s(_vm.anggota.tanggal_lahir)),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.gender) +
+                                  "\n                                                "
+                              ),
                             ]),
                           ]),
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("NIK"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Tanggal Lahir")) +
+                                  "\n                                                "
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.tanggal_lahir) +
+                                  "\n                                                "
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", { attrs: { width: "35%" } }, [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("NIK")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(_vm.anggota.nik))]),
@@ -921,23 +1036,47 @@ var render = function () {
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Pekerjaan"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Pekerjaan")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.pekerjaan))]),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.pekerjaan) +
+                                  "\n                                                "
+                              ),
+                            ]),
                           ]),
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Alamat"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Alamat")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.alamat))]),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.alamat) +
+                                  "\n                                                "
+                              ),
+                            ]),
                           ]),
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("RT"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("RT")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(_vm.anggota.rt))]),
@@ -945,7 +1084,11 @@ var render = function () {
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("RW"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("RW")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(_vm.anggota.rw))]),
@@ -953,41 +1096,83 @@ var render = function () {
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Kelurahan"))),
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.kelurahan))]),
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Kecamatan"))),
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.kecamatan))]),
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Kabupaten Kota"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Kelurahan")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("td", [
-                              _vm._v(_vm._s(_vm.anggota.kabupaten_kota)),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.kelurahan) +
+                                  "\n                                                "
+                              ),
                             ]),
                           ]),
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("Korwil"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Kecamatan")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.korwil))]),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.kecamatan) +
+                                  "\n                                                "
+                              ),
+                            ]),
                           ]),
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("TPS"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Kabupaten Kota")) +
+                                  "\n                                                "
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.kabupaten_kota) +
+                                  "\n                                                "
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", { attrs: { width: "35%" } }, [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("Korwil")) +
+                                  "\n                                                "
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.korwil) +
+                                  "\n                                                "
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", { attrs: { width: "35%" } }, [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("TPS")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(_vm.anggota.tps))]),
@@ -995,7 +1180,11 @@ var render = function () {
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
-                              _vm._v(_vm._s(_vm.$t("KTP"))),
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.$t("KTP")) +
+                                  "\n                                                "
+                              ),
                             ]),
                             _vm._v(" "),
                             _c("td", [
@@ -1012,39 +1201,65 @@ var render = function () {
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
                               _vm._v(
-                                _vm._s(_vm.$t("Apakah Bapak / Ibu tau NASDEM?"))
+                                "\n                                                    " +
+                                  _vm._s(
+                                    _vm.$t("Apakah Bapak / Ibu tau NASDEM?")
+                                  ) +
+                                  "\n                                                "
                               ),
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.question_1))]),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.question_1) +
+                                  "\n                                                "
+                              ),
+                            ]),
                           ]),
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
                               _vm._v(
-                                _vm._s(
-                                  _vm.$t(
-                                    "Apakah Bapak / Ibu kenal CALEG NASDEM Ibu Hj. Nur Nadlifah nomor urut 2?"
-                                  )
-                                )
+                                "\n                                                    " +
+                                  _vm._s(
+                                    _vm.$t(
+                                      "Apakah Bapak / Ibu kenal CALEG NASDEM Mochammad Pandu, SE ?"
+                                    )
+                                  ) +
+                                  "\n                                                "
                               ),
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.question_2))]),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.question_2) +
+                                  "\n                                                "
+                              ),
+                            ]),
                           ]),
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { attrs: { width: "35%" } }, [
                               _vm._v(
-                                _vm._s(
-                                  _vm.$t(
-                                    "Apakah Bapak / Ibu suka dengan NASDEM?"
-                                  )
-                                )
+                                "\n                                                    " +
+                                  _vm._s(
+                                    _vm.$t(
+                                      "Apakah Bapak / Ibu suka dengan NASDEM?"
+                                    )
+                                  ) +
+                                  "\n                                                "
                               ),
                             ]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(_vm.anggota.question_3))]),
+                            _c("td", [
+                              _vm._v(
+                                "\n                                                    " +
+                                  _vm._s(_vm.anggota.question_3) +
+                                  "\n                                                "
+                              ),
+                            ]),
                           ]),
                         ]),
                       ]
@@ -1059,7 +1274,11 @@ var render = function () {
                   { staticClass: "blog-social" },
                   [
                     _c("h4", { staticClass: "title" }, [
-                      _vm._v(_vm._s(_vm.$t("Social Share :"))),
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(_vm.$t("Social Share :")) +
+                          "\n                                "
+                      ),
                     ]),
                     _vm._v(" "),
                     _c(
