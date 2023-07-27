@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use Auth;
 
-use Yazan\DataTable\DataGrid;
-
 use App\Models\Anggota;
 use App\Helpers\Helper;
-use App\DataGrid\anggotaGrid;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,10 +25,8 @@ class AnggotaController extends Controller
     {
         if (\Auth::user()->role_id == 1) {
             $anggotas = Anggota::orderBy('id', 'DESC')->paginate(10);
-            // $anggotas = (new anggotaGrid())->render();
         } else {
             $anggotas = Anggota::where('user_id', \Auth::id())->orderBy('id', 'DESC')->paginate(10);
-            // $anggotas = (new anggotaGrid())->render()::where('user_id', \Auth::id());
         }
 
         return AnggotaResource::collection($anggotas);
