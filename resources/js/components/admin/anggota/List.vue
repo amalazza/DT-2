@@ -36,6 +36,21 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <el-radio-group v-model="exportType">
+                                <el-radio
+                                    v-for="(item, index) in supportType"
+                                    :key="index"
+                                    :label="item"
+                                    border
+                                    >{{ item }}</el-radio
+                                >
+                            </el-radio-group>
+                            <el-button
+                                class="export-it"
+                                type="primary"
+                                @click="exportFile()"
+                                >Export it !</el-button
+                            >
                             <el-table
                                 ref="multipleTable"
                                 :data="anggotas.data"
@@ -193,6 +208,7 @@
 </template>
 
 <script>
+import elTableExport from "el-table-export";
 export default {
     name: "List",
     data() {
@@ -209,12 +225,30 @@ export default {
             kecamatanFilter: "",
             korwilFilter: "",
             tpsFilter: "",
+            supportType: ["csv", "txt", "json", "xls"],
+            exportType: "csv",
         };
     },
     created() {
         this.List();
     },
     methods: {
+        exportFile() {
+            elTableExport(this.$refs.multipleTable, {
+                fileName: "export-demo",
+                type: this.exportType,
+                useFormatter: true,
+            })
+                .then(() => {
+                    console.info("ok");
+                })
+                .catch((err) => {
+                    console.info(err);
+                });
+        },
+        formatterHandler(row) {
+            return "formatter: " + row.remark;
+        },
         toggleSelection(rows) {
             if (rows) {
                 rows.forEach((row) => {
