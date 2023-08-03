@@ -36,30 +36,32 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <el-radio-group v-model="exportType">
-                                <el-radio
-                                    v-for="(item, index) in supportType"
-                                    :key="index"
-                                    :label="item"
-                                    border
-                                    >{{ item }}</el-radio
+                            <div style="margin-bottom: 10px">
+                                <el-button @click="exportToJson">
+                                    Export to JSON
+                                </el-button>
+                                <el-button @click="exportToCsv"
+                                    >Export to CSV</el-button
                                 >
-                            </el-radio-group>
-                            <el-button
-                                class="export-it"
-                                type="primary"
-                                @click="exportFile()"
-                                >Export it !</el-button
-                            >
+                                <el-button @click="exportToXlsx"
+                                    >Export to Excel</el-button
+                                >
+                                <el-button @click="exportToPdf"
+                                    >Export to PDF</el-button
+                                >
+                            </div>
+
                             <el-table
                                 ref="multipleTable"
                                 :data="anggotas.data"
                                 style="width: 100%"
                                 @selection-change="handleSelectionChange"
+                                @filter-change="handleFilterChange"
                                 border
                                 fit
                                 highlight-current-row
                                 v-loading="loading"
+                                v-if="!isExported"
                             >
                                 <el-table-column type="selection" width="55">
                                 </el-table-column>
@@ -81,7 +83,7 @@
                                 >
                                 </el-table-column>
                                 <el-table-column
-                                    property="rt"
+                                    prop="rt"
                                     :label="`${$t('RT')}`"
                                     :filters="getRtFilters()"
                                     :filter-method="handleRtFilter"
@@ -161,6 +163,79 @@
                                     </template>
                                 </el-table-column>
                             </el-table>
+                            <!-- <el-table
+                                ref="filteredTable"
+                                :data="filteredData"
+                                style="width: 100%"
+                                @selection-change="handleSelectionChange"
+                                border
+                                fit
+                                highlight-current-row
+                                v-loading="loading"
+                                v-if="isExported"
+                            >
+                                <el-table-column type="selection" width="55">
+                                </el-table-column>
+                                <el-table-column
+                                    property="ktp_image"
+                                    :label="`${$t('Image')}`"
+                                >
+                                    <template slot-scope="scope">
+                                        <img
+                                            :src="`/uploads/${scope.row.ktp_image}`"
+                                            alt=""
+                                            class="tImg"
+                                        />
+                                    </template>
+                                </el-table-column>
+                                <el-table-column
+                                    property="nama"
+                                    :label="`${$t('Nama')}`"
+                                >
+                                </el-table-column>
+                                <el-table-column
+                                    property="rt"
+                                    :label="`${$t('RT')}`"
+                                    :filters="getRtFilters()"
+                                    :filter-method="handleRtFilter"
+                                >
+                                </el-table-column>
+                                <el-table-column
+                                    property="rw"
+                                    :label="`${$t('RW')}`"
+                                    :filters="getRwFilters()"
+                                    :filter-method="handleRwFilter"
+                                >
+                                </el-table-column>
+                                <el-table-column
+                                    property="kelurahan"
+                                    :label="`${$t('Kelurahan')}`"
+                                    :filters="getKelurahanFilters()"
+                                    :filter-method="handleKelurahanFilter"
+                                >
+                                </el-table-column>
+                                <el-table-column
+                                    property="kecamatan"
+                                    :label="`${$t('Kecamatan')}`"
+                                    :filters="getKecamatanFilters()"
+                                    :filter-method="handleKecamatanFilter"
+                                >
+                                </el-table-column>
+                                <el-table-column
+                                    property="korwil"
+                                    :label="`${$t('Korwil')}`"
+                                    :filters="getKorwilFilters()"
+                                    :filter-method="handleKorwilFilter"
+                                >
+                                </el-table-column>
+                                <el-table-column
+                                    property="tps"
+                                    :label="`${$t('TPS')}`"
+                                    :filters="getTpsFilters()"
+                                    :filter-method="handleTpsFilter"
+                                >
+                                </el-table-column>
+                            </el-table> -->
                             <div v-if="anggotas.meta">
                                 <el-pagination
                                     class="text-center mt-4"
@@ -208,7 +283,11 @@
 </template>
 
 <script>
-import elTableExport from "el-table-export";
+import Papa from "papaparse";
+import * as XLSX from "xlsx";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+
 export default {
     name: "List",
     data() {
@@ -227,24 +306,81 @@ export default {
             tpsFilter: "",
             supportType: ["csv", "txt", "json", "xls"],
             exportType: "csv",
+            filteredData: [],
+            isExported: false,
+            isFiltered: false,
+            filterStatus: {},
         };
     },
     created() {
         this.List();
     },
     methods: {
-        exportFile() {
-            elTableExport(this.$refs.multipleTable, {
-                fileName: "export-demo",
-                type: this.exportType,
-                useFormatter: true,
-            })
-                .then(() => {
-                    console.info("ok");
-                })
-                .catch((err) => {
-                    console.info(err);
-                });
+        exportToJson() {
+            const jsonData = JSON.stringify(
+                this.isFiltered ? this.filteredData : this.anggotas.data
+            );
+            const blob = new Blob([jsonData], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "data.json";
+            a.click();
+            URL.revokeObjectURL(url);
+        },
+        exportToCsv() {
+            const csv = Papa.unparse(
+                this.isFiltered ? this.filteredData : this.anggotas.data
+            );
+            const blob = new Blob([csv], { type: "text/csv" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "data.csv";
+            a.click();
+            URL.revokeObjectURL(url);
+        },
+
+        exportToXlsx() {
+            const dataPDF = this.isFiltered
+                ? this.filteredData
+                : this.anggotas.data;
+            const worksheet = XLSX.utils.json_to_sheet(dataPDF);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+            XLSX.writeFile(workbook, "data.xlsx");
+        },
+        exportToPdf() {
+            const dataPDF = this.isFiltered
+                ? this.filteredData
+                : this.anggotas.data;
+            const doc = new jsPDF();
+            doc.text("Data to Export", 10, 10);
+            doc.autoTable({
+                head: [
+                    [
+                        "Nama",
+                        "RT",
+                        "RW",
+                        "Kelurahan",
+                        "Kecamatan",
+                        "Korwil",
+                        "TPS",
+                    ],
+                ],
+                body: dataPDF.map(
+                    ({ nama, rt, rw, kelurahan, kecamatan, korwil, tps }) => [
+                        nama,
+                        rt,
+                        rw,
+                        kelurahan,
+                        kecamatan,
+                        korwil,
+                        tps,
+                    ]
+                ),
+            });
+            doc.save("data.pdf");
         },
         formatterHandler(row) {
             return "formatter: " + row.remark;
@@ -376,27 +512,59 @@ export default {
         },
 
         handleRtFilter(value, row) {
+            this.filteredData = this.anggotas.data.filter(
+                (anggota) => anggota.rt.indexOf(value) !== -1
+            );
             return row.rt.indexOf(value) !== -1;
         },
 
         handleRwFilter(value, row) {
+            this.filteredData = this.anggotas.data.filter(
+                (anggota) => anggota.rw.indexOf(value) !== -1
+            );
             return row.rw.indexOf(value) !== -1;
         },
 
         handleKelurahanFilter(value, row) {
+            this.filteredData = this.anggotas.data.filter(
+                (anggota) => anggota.kelurahan.indexOf(value) !== -1
+            );
             return row.kelurahan.indexOf(value) !== -1;
         },
 
         handleKecamatanFilter(value, row) {
+            this.filteredData = this.anggotas.data.filter(
+                (anggota) => anggota.kecamatan.indexOf(value) !== -1
+            );
             return row.kecamatan.indexOf(value) !== -1;
         },
 
         handleKorwilFilter(value, row) {
+            this.filteredData = this.anggotas.data.filter(
+                (anggota) => anggota.korwil.indexOf(value) !== -1
+            );
             return row.korwil.indexOf(value) !== -1;
         },
 
         handleTpsFilter(value, row) {
+            this.filteredData = this.anggotas.data.filter(
+                (anggota) => anggota.tps.indexOf(value) !== -1
+            );
             return row.tps.indexOf(value) !== -1;
+        },
+        handleFilterChange(filters) {
+            // Update the filterStatus object based on the applied filters
+            Object.keys(filters).forEach((column) => {
+                this.filterStatus[column] = filters[column].length > 0;
+            });
+
+            this.isFiltered = Object.values(this.filterStatus).some(
+                (value) => value
+            );
+
+            if (!this.isFiltered) {
+                this.filteredData = this.anggotas.data;
+            }
         },
     },
     computed: {
